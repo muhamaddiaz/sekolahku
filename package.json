@@ -17,6 +17,10 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.5",
         "popper.js": "^1.12",
-        "vue": "^2.5.7"
+        "vue": "^2.5.7",
+        "animate.css": "^3.7.0"
+    },
+    "dependencies": {
+        "animate.css": "^3.7.0"
     }
 }
