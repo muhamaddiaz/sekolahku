@@ -14207,3 +14207,63 @@ p {
           animation-fill-mode: forwards;
 }
 
+.side-color {
+  display: inline-block;
+  width: 100px;
+  height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background-color: #3B35D5;
+}
+
+.login-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+
+.login-flex .login-flex__form-ct {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  border: 1px solid #3B35D5;
+  width: 80%;
+  height: 500px;
+}
+
+.login-flex .login-flex__form-ct .login-flex__form {
+  display: inline-block;
+  padding: 40px;
+  width: 200px;
+  -webkit-box-flex: 15;
+      -ms-flex-positive: 15;
+          flex-grow: 15;
+}
+
+.secondary-color {
+  color: #3B35D5;
+}
+
+.primary-color {
+  color: #000080;
+}
+
+.secondary-color-background {
+  background-color: #3B35D5;
+}
+
+.primary-color-background {
+  background-color: #000080;
+}
+

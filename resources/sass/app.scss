@@ -108,6 +108,54 @@ p {
   animation-fill-mode: forwards;
 }
 
+//login
+
+.side-color {
+  display: inline-block;
+  width: 100px;
+  height: 100%;
+  flex-grow: 1;
+  background-color: $secColor;
+}
+
+.login-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .login-flex__form-ct {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid $secColor;
+    width: 80%;
+    height: 500px;
+    .login-flex__form {
+      display: inline-block;
+      padding: 40px;
+      width: 200px;
+      flex-grow: 15;
+    }
+  }
+}
+
+//global class
+
+.secondary-color {
+  color: $secColor;
+}
+
+.primary-color {
+  color: $baseColor;
+}
+
+.secondary-color-background {
+  background-color: $secColor;
+}
+
+.primary-color-background {
+  background-color: $baseColor;
+}
+
 //keyframes
 
 @mixin icon-animate($x, $y) {
