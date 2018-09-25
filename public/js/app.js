@@ -13906,7 +13906,15 @@ window.Vue = __webpack_require__(36);
 Vue.component('example-component', __webpack_require__(39));
 
 var app = new Vue({
-  el: '#app'
+    el: '#app'
+});
+
+$.ajax({
+    type: 'GET',
+    url: 'https://api.rajaongkir.com/starter/province?key=b9fbef92034e213b68a311db06932153',
+    success: function success() {
+        console.log('success');
+    }
 });
 
 /***/ }),

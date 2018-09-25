@@ -20,3 +20,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
+
+$.ajax({
+    type: 'GET',
+    url: 'https://api.rajaongkir.com/starter/province?key=b9fbef92034e213b68a311db06932153',
+    success: function() {
+        console.log('success');
+    }
+});

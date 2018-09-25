@@ -11,6 +11,9 @@
 // Animate.css
 @import '~animate.css/animate.css';
 
+// Font-awesome
+@import '~font-awesome/scss/font-awesome';
+
 p {
   font-size: 20px;
 }
@@ -118,18 +121,18 @@ p {
   background-color: $secColor;
 }
 
-.login-flex {
+.login-flex, .register-flex {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  .login-flex__form-ct {
+  .login-flex__form-ct, .register-flex__form-ct {
     display: flex;
     align-items: stretch;
     border: 1px solid $secColor;
     width: 80%;
     height: 500px;
-    .login-flex__form {
+    .login-flex__form, .register-flex__form {
       display: inline-block;
       padding: 40px;
       width: 200px;
