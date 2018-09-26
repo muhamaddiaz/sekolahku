@@ -22,6 +22,14 @@ class OrangTua extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        Schema::table('orang_tua',function (Blueprint $table)
+        {
+            $table->foreign('id_siswa')
+                    ->references('id_siswa')
+                    ->on('siswa')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+        });
     }
 
     /**

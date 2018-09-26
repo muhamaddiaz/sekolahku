@@ -17,13 +17,21 @@ class Siswa extends Migration
             $table->increments('id_siswa');
             $table->string('nama');
             $table->string('NISN')->unique();
-            $table->string('sekolah');
+            $table->integer('sekolah');
             $table->string('email');
             $table->string('kelas');
             $table->boolean('osis')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+        });
+        Schema::table('siswa',function(Blueprint $table)
+        {
+            $table  ->foreign('id')
+                    ->refrences('sekolah')
+                    ->on('school_infos')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
         });
     }
 
