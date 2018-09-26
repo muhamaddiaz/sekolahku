@@ -110,7 +110,7 @@
                     </div>
                     <div class="form-group mt-5">
                         <button type="submit" class="btn btn-block secondary-color-background text-white mb-4">
-                            {{ __('Register') }}
+                            {{ __('register') }}
                         </button>
                     </div>
                 </form>
