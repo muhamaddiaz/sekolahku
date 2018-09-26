@@ -49,11 +49,8 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            <li class="nav-item">
                                 @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="button__gradient button__gradient--pilled" href="{{ route('register') }}">Daftarkan Sekolah</a>
                                 @endif
                             </li>
                         @else

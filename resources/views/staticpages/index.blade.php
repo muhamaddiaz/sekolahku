@@ -19,7 +19,7 @@
                         yang dapat membantu pihak sekolah dan juga siswa dalam 
                         mengelola setiap kegiatan yang ada di sekolah dengan mudah.
                     </p>
-                    <button class="button__gradient button__gradient--pilled">Coba sekarang!</button>
+                    <a class="button__gradient button__gradient--pilled" href="{{ route('login') }}">Coba sekarang!</a>
                 </div>
             </div>
         </div>
