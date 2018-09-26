@@ -15,13 +15,23 @@ class Siswa extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->increments('id_siswa');
+            $table->integer('id_sekolah');
             $table->string('nama');
             $table->string('NISN')->unique();
-            $table->string('sekolah');
+            $table->integer('id_kelas');
             $table->string('email');
-            $table->string('kelas');
             $table->boolean('osis')->nullable();
             $table->string('password');
+            $table->foreign('id_sekolah')
+                    ->references('id')
+                    ->on('school_infos')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+            $table->foreign('id_kelas')
+                    ->references('id_kelas')
+                    ->on('kelas')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
