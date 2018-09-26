@@ -19,18 +19,11 @@ class Guru extends Migration
             $table->string('nama');
             $table->string('mata pelajaran');
             $table->integer('id_kelas')->nullable();
-            $table->integer('sekolah');
+            $table->string('sekolah');
             $table->string('password');
             $table->string('email')->nullable();
             $table->rememberToken();
             $table->timestamps();
-        });
-        Schema::table('guru',function(Blueprint $table)
-        {
-            $table->foreign('id')
-                    ->references('sekolah')
-                    ->onDelete('cascade')
-                    ->onUpdate('cascade');
         });
     }
 
