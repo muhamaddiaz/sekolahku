@@ -21,7 +21,50 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar fixed-top navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar-custom">
+            <div class="container navbar-custom__flex">
+                <div class="navbar-custom__left-control">
+                    <a href="{{ url('/') }}" class="navbar-custom__header primary-color">Sekolahku.id</a>
+                    <ul class="navbar-custom__list-item">
+                        @guest
+                        <li>
+                            <a href="{{ route('home') }}">Beranda</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/') }}">Tentang kami</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/') }}">Kontak</a>
+                        </li>
+                        @endguest
+                    </ul>
+                </div>
+                <div class="navbar-custom__left-control">
+                    @guest
+                        <a href="{{ route('register') }}" class="button__gradient button__gradient--pilled">Coba sekarang!</a>
+                    @else
+                        <div class="dropdown">
+                            <a id="Dropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </div>
+                    @endguest
+                </div>
+            </div>
+        </nav>
+        <!--<nav class="navbar fixed-top navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -31,14 +74,11 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -70,7 +110,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>-->
 
         <main>
             @yield('content')

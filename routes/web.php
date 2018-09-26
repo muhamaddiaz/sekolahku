@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('staticpages.index');
-});
+})->middleware('guest');
 
 Auth::routes();
 

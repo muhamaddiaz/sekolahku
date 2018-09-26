@@ -3,11 +3,11 @@
 @section('content')
     <header class="index-head">
         <img class="icon-animate1" src="{{ asset('svg/desktop.svg') }}" alt="school.svg" 
-        style="width: 10%; right: 0; top: 20%; transform: translate(0,70%)">
+        style="width: 10%; right: 30%; top: 55%; transform: translate(0,70%)">
         <img src="{{ asset('svg/chat.svg') }}" alt="school.svg" 
-        style="width: 10%; right: 0; top: 20%; transform: translate(0, 70%);">
+        style="width: 10%; right: 30%; top: 5%; transform: translate(0, 70%);">
         <img src="{{ asset('svg/ereader-2.svg') }}" alt="school.svg" 
-        style="width: 10%; right: 0; top: 20%; transform: translate(0, 70%);">
+        style="width: 10%; right: 35%; top: 30%; transform: translate(0, 70%);">
         <img class="animated bounceInRight" src="{{ asset('svg/school.svg') }}" alt="school.svg" 
         style="width: 30%; right: -170px; top: 15%; ">
         <div class="index-head__flex">
@@ -19,7 +19,7 @@
                         yang dapat membantu pihak sekolah dan juga siswa dalam 
                         mengelola setiap kegiatan yang ada di sekolah dengan mudah.
                     </p>
-                    <button class="button__gradient button__gradient--pilled">Coba sekarang!</button>
+                    <button class="button__gradient button__gradient--pilled button__gradient--shadow">Coba sekarang!</button>
                 </div>
             </div>
         </div>

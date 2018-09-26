@@ -14,3 +14,7 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+
+$(document).ready(function() {
+
+});

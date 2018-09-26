@@ -13922,6 +13922,8 @@ __webpack_require__(15);
 
 __webpack_require__(39);
 
+$(document).ready(function () {});
+
 /***/ }),
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
