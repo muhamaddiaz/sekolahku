@@ -8,7 +8,7 @@ class guru extends Model
 {
     protected $table='guru';
     
-    public function school
+    public function school()
     {
     	return $this->belongsTo('App\Model\School_info');
     }

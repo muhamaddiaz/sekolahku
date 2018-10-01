@@ -17148,11 +17148,37 @@ p {
   font-size: 20px;
 }
 
+.he {
+  height: 200vh;
+  width: 100%;
+}
+
 .navbar-custom__left {
   position: fixed;
   height: 100vh;
   width: 100px;
   background-color: snow;
+}
+
+.navbar-custom__left .navbar-custom__item-horizon {
+  position: relative;
+  bottom: 0;
+  display: inline-block;
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-custom__left .navbar-custom__item-horizon li {
+  background-color: snow;
+  text-align: center;
+}
+
+.navbar-custom__left .navbar-custom__item-horizon li a {
+  display: inline-block;
+  padding: 20px 0;
+  width: 100%;
 }
 
 .navbar-laravel {
