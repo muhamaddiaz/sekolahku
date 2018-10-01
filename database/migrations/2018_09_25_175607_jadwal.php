@@ -15,9 +15,14 @@ class Jadwal extends Migration
     {
          Schema::create('jadwal', function (Blueprint $table) {
             $table->increments('id_jadwal');
-            $table->integer('id_kelas');
+            $table->integer('id_kelas')->unsigned();
             $table->string('tanggal_jadwal');
             $table->string('status_jadwa;');
+            $table->foreign('id_kelas')
+                    ->references('id_kelas')
+                    ->on('kelas')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
