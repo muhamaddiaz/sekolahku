@@ -15,10 +15,10 @@ class Siswa extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->increments('id_siswa');
-            $table->integer('id_sekolah');
+            $table->integer('id_sekolah')->unsigned();
             $table->string('nama');
             $table->string('NISN')->unique();
-            $table->integer('id_kelas');
+            $table->integer('id_kelas')->unsigned();
             $table->string('email');
             $table->boolean('osis')->nullable();
             $table->string('password');

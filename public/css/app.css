@@ -5886,11 +5886,6 @@ pre code {
   opacity: 1;
 }
 
-.form-control:-ms-input-placeholder {
-  color: #6c757d;
-  opacity: 1;
-}
-
 .form-control::-ms-input-placeholder {
   color: #6c757d;
   opacity: 1;
@@ -17151,6 +17146,13 @@ a.text-dark:focus {
 
 p {
   font-size: 20px;
+}
+
+.navbar-custom__left {
+  position: fixed;
+  height: 100vh;
+  width: 100px;
+  background-color: snow;
 }
 
 .navbar-laravel {
