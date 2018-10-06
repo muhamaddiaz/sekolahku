@@ -14,28 +14,72 @@ function Main(props) {
 }
 
 class MainContent extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            switchMenu: true
+        }
+    }
+
+    newest() {
+        this.setState({
+            switchMenu: true
+        });
+    }
+
+    recap() {
+        this.setState({
+            switchMenu: false
+        });
+    }
+
     render() {
         let styleSheet = {
             width: '100%',
             height: '100%'
         }
         return (
-            <MenuNavigation />
+            <div>
+                <MenuNavigation newest={this.newest.bind(this)} recap={this.recap.bind(this)} />
+                {this.state.switchMenu ? 
+                    <NewestFeed /> : 
+                    <RecapScore />}
+            </div>
         );
+    }
+}
+
+class NewestFeed extends Component {
+    render() {
+        return (
+            <div className="mt-5 animated zoomInDown delay-1">
+                <h1>Newest Feed</h1>
+            </div>
+        )
+    }
+}
+
+class RecapScore extends Component {
+    render() {
+        return (
+            <div className="mt-5 animated zoomInDown delay-1">
+                <h1>Recap Score</h1>
+            </div>
+        )
     }
 }
 
 function MenuNavigation(props) {
     return (
         <div className="row text-white animated fadeIn delay-1s">
-            <div className="col-md-4">
-                <Card title_card="Terbaru" text_card="Info terbaru di sekitar sekolah" />
+            <div className="col-md-4" onClick={props.newest}>
+                <Card title_card="Terbaru" text_card="Info terbaru sekolah" />
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4" onClick={props.recap}>
                 <Card title_card="Rekap Nilai" text_card="Info nilai terkini" />
             </div>
             <div className="col-md-4">
-            <   Card title_card="Classmates" text_card="Disekitar teman anda" />
+                <Card title_card="Classmates" text_card="Disekitar teman anda" />
             </div>
         </div>
     )

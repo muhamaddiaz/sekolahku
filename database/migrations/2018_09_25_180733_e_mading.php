@@ -18,14 +18,13 @@ class EMading extends Migration
             $table->integer('id_siswa')->unsigned();
             $table->string('judul_mading');
             $table->string('image_mading');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->string('kategori_mading');
-            $table->foreign('id_siswa')
-                    ->references('id_siswa')
-                    ->on('siswa')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
-            $table->rememberToken();
+            // $table->foreign('id_siswa')
+            //         ->references('id_siswa')
+            //         ->on('siswa')
+            //         ->onUpdate('cascade')
+            //         ->onDelete('cascade');
             $table->timestamps();
         });
     }
