@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import Image1 from './image/urban-event-space-model_925x.jpg';
 
@@ -50,10 +51,33 @@ class MainContent extends Component {
 }
 
 class NewestFeed extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            dataMading: []
+        }
+    }
+    componentDidMount() {
+        Axios.get('http://localhost:8000/api/mading')
+            .then((res) => {
+                this.setState({
+                    dataMading: res.data
+                });
+            }).catch(e => console.log(e));
+    }
     render() {
+        const NewCard = this.state.dataMading.map((m) => {
+            return <Card title_card={m.judul_mading} 
+                        text_card={m.deskripsi} 
+                        image_card={m.image_mading} />
+        });
         return (
             <div className="mt-5 animated zoomInDown delay-1">
                 <h1>Newest Feed</h1>
+                <br/>
+                <div className="card-columns">
+                    {NewCard}
+                </div>
             </div>
         )
     }
@@ -89,8 +113,11 @@ function Card(props) {
     let cardText = {
         fontSize: '.9rem'
     };
+    let imageCard = {
+        backgroundImage: 'url('+props.image_card+')'
+    }
     return (
-        <div className="card primary-color-background">
+        <div className="card text-white primary-color-background">
             <div className="card-body">
                 <p className="card-title">{props.title_card}</p>
                 <p className="card-text" style={cardText}>{props.text_card}</p>
