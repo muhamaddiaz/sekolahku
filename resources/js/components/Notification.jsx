@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 function Notification() {
     return (
         <div className="container">
-            <div className="jumbotron">
-                <h1>Notification</h1>
-            </div>
+            <h1 className="primary-color pt-5 animated pulse">Notification</h1>
+            <hr/>
         </div>
     )
 }

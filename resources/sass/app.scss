@@ -221,6 +221,11 @@ p {
   }
 }
 
+.main-class {
+  height: 100vh;
+  width: 100%;
+}
+
 //global class
 
 .secondary-color {
@@ -237,6 +242,10 @@ p {
 
 .primary-color-background {
   background-color: $baseColor;
+}
+
+.fade-color {
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 //keyframes
