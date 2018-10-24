@@ -61247,6 +61247,8 @@ module.exports = hoistNonReactStatics;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__education_clip_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__education_clip_svg__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__education_library_svg__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__education_library_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__education_library_svg__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__avatar_man_1_svg__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__avatar_man_1_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__avatar_man_1_svg__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -61265,6 +61267,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
 var NavLeft = function (_Component) {
     _inherits(NavLeft, _Component);
 
@@ -61275,8 +61278,8 @@ var NavLeft = function (_Component) {
 
         _this.state = {
             iconStyle: {
-                width: '50px',
-                height: '50px'
+                width: '40px',
+                height: '40px'
             },
             paddingIcon: {
                 padding: '10px 0'
@@ -61293,37 +61296,51 @@ var NavLeft = function (_Component) {
                 'div',
                 { className: 'navbar-custom__left' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'ul',
-                    { className: 'navbar-custom__item-horizon' },
+                    'div',
+                    { className: 'navbar-custom__left--container' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'li',
-                        null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(IconLink, { iconStyle: this.state.iconStyle,
-                            iconName: __WEBPACK_IMPORTED_MODULE_2__education_school_svg___default.a, linkto: '/home' })
+                        'ul',
+                        { className: 'navbar-custom__item-horizon navbar-custom__item-horizon--top' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'li',
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(IconLink, { iconStyle: this.state.iconStyle,
+                                iconName: __WEBPACK_IMPORTED_MODULE_2__education_school_svg___default.a, linkto: '/home' })
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'li',
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(IconLink, { iconStyle: this.state.iconStyle,
+                                iconName: __WEBPACK_IMPORTED_MODULE_3__education_bell_svg___default.a, linkto: '/notification' })
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'li',
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(IconLink, { iconStyle: this.state.iconStyle,
+                                iconName: __WEBPACK_IMPORTED_MODULE_4__education_pie_chart_svg___default.a, linkto: '/statistics' })
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'li',
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(IconLink, { iconStyle: this.state.iconStyle,
+                                iconName: __WEBPACK_IMPORTED_MODULE_5__education_clip_svg___default.a, linkto: '/emading' })
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'li',
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(IconLink, { iconStyle: this.state.iconStyle,
+                                iconName: __WEBPACK_IMPORTED_MODULE_6__education_library_svg___default.a, linkto: '/elibrary' })
+                        )
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'li',
-                        null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(IconLink, { iconStyle: this.state.iconStyle,
-                            iconName: __WEBPACK_IMPORTED_MODULE_3__education_bell_svg___default.a, linkto: '/notification' })
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'li',
-                        null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(IconLink, { iconStyle: this.state.iconStyle,
-                            iconName: __WEBPACK_IMPORTED_MODULE_4__education_pie_chart_svg___default.a, linkto: '/statistics' })
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'li',
-                        null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(IconLink, { iconStyle: this.state.iconStyle,
-                            iconName: __WEBPACK_IMPORTED_MODULE_5__education_clip_svg___default.a, linkto: '/emading' })
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'li',
-                        null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(IconLink, { iconStyle: this.state.iconStyle,
-                            iconName: __WEBPACK_IMPORTED_MODULE_6__education_library_svg___default.a, linkto: '/elibrary' })
+                        'ul',
+                        { className: 'navbar-custom__item-horizon navbar-custom__item-horizon--bottom' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'li',
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(IconLink, { iconStyle: this.state.iconStyle,
+                                iconName: __WEBPACK_IMPORTED_MODULE_7__avatar_man_1_svg___default.a, linkto: '/admin' })
+                        )
                     )
                 )
             );
@@ -61666,6 +61683,23 @@ function Notification() {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/man-1.svg?dabcdaa294004a1e59704d4837497446";
 
 /***/ })
 /******/ ]);

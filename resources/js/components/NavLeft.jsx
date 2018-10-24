@@ -7,6 +7,7 @@ import BellIcon from './education/bell.svg';
 import StatIcon from './education/pie-chart.svg';
 import ClipIcon from './education/clip.svg';
 import LibraryIcon from './education/library.svg';
+import AdminIcon from './avatar/man-1.svg';
 
 
 class NavLeft extends Component {
@@ -14,8 +15,8 @@ class NavLeft extends Component {
         super(props);
         this.state = {
             iconStyle: {
-                width: '50px', 
-                height: '50px'
+                width: '40px', 
+                height: '40px'
             },
             paddingIcon: {
                 padding: '10px 0'
@@ -26,28 +27,36 @@ class NavLeft extends Component {
         console.log(this.props);
         return(
             <div className="navbar-custom__left">
-                <ul className="navbar-custom__item-horizon">
-                    <li>
-                        <IconLink iconStyle={this.state.iconStyle}
-                            iconName={SchoolIcon} linkto="/home" />
-                    </li>
-                    <li>
-                        <IconLink iconStyle={this.state.iconStyle}
-                            iconName={BellIcon} linkto="/notification" />
-                    </li>
-                    <li>
-                        <IconLink iconStyle={this.state.iconStyle}
-                            iconName={StatIcon} linkto="/statistics" />
-                    </li>
-                    <li>
-                        <IconLink iconStyle={this.state.iconStyle}
-                            iconName={ClipIcon} linkto="/emading" />
-                    </li>
-                    <li>
-                        <IconLink iconStyle={this.state.iconStyle}
-                            iconName={LibraryIcon} linkto="/elibrary" />
-                    </li>
-                </ul>
+                <div className="navbar-custom__left--container">
+                    <ul className="navbar-custom__item-horizon navbar-custom__item-horizon--top">
+                        <li>
+                            <IconLink iconStyle={this.state.iconStyle}
+                                iconName={SchoolIcon} linkto="/home" />
+                        </li>
+                        <li>
+                            <IconLink iconStyle={this.state.iconStyle}
+                                iconName={BellIcon} linkto="/notification" />
+                        </li>
+                        <li>
+                            <IconLink iconStyle={this.state.iconStyle}
+                                iconName={StatIcon} linkto="/statistics" />
+                        </li>
+                        <li>
+                            <IconLink iconStyle={this.state.iconStyle}
+                                iconName={ClipIcon} linkto="/emading" />
+                        </li>
+                        <li>
+                            <IconLink iconStyle={this.state.iconStyle}
+                                iconName={LibraryIcon} linkto="/elibrary" />
+                        </li>
+                    </ul>
+                    <ul className="navbar-custom__item-horizon navbar-custom__item-horizon--bottom">
+                        <li>
+                            <IconLink iconStyle={this.state.iconStyle}
+                                iconName={AdminIcon} linkto="/admin" />
+                        </li>
+                    </ul>
+                </div>
             </div>
         )
     }

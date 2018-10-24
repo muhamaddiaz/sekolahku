@@ -17161,13 +17161,20 @@ p {
 }
 
 .navbar-custom__left .navbar-custom__item-horizon {
-  position: relative;
-  bottom: 0;
+  position: absolute;
   display: inline-block;
   list-style: none;
   width: 100%;
   margin: 0;
   padding: 0;
+}
+
+.navbar-custom__left .navbar-custom__item-horizon .navbar-custom__item-horizon--top {
+  top: 0;
+}
+
+.navbar-custom__left .navbar-custom__item-horizon .navbar-custom__item-horizon--bottom {
+  bottom: 0;
 }
 
 .navbar-custom__left .navbar-custom__item-horizon li {
@@ -17179,6 +17186,16 @@ p {
   display: inline-block;
   padding: 20px 0;
   width: 100%;
+}
+
+.navbar-custom__left--container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.navbar-custom__item-horizon--bottom {
+  bottom: 0;
 }
 
 .navbar-laravel {
@@ -17389,7 +17406,7 @@ p {
           align-items: stretch;
   border: 1px solid #3B35D5;
   width: 80%;
-  height: 500px;
+  height: 70vh;
 }
 
 .login-flex .login-flex__form-ct .login-flex__form,
