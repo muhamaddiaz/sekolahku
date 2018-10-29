@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\School_info;
+use App\Province;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -65,6 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $province = Province::findOrFail($data['school_region']);
         $user = User::create([
             'name' => $data['name'],
             'username' => $data['username'],
@@ -74,7 +76,7 @@ class RegisterController extends Controller
         
         $school = new School_info([
             'school_name' => $data['school_name'], 
-            'school_region' => $data['school_region'], 
+            'school_region' => $province->province, 
             'school_city' => $data['school_city'], 
             'phone_number'=> $data['phone_number']
         ]);

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="register-flex">
-        <div class="register-flex__form-ct animated tada">
+        <div class="register-flex__form-ct animated zoomInDown">
             <div class="side-color"></div>
             <div class="register-flex__form">
                 <h2 class="secondary-color">Registrasi admin sekolah</h2>
@@ -24,10 +24,13 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <input id="school_region" type="text" 
+                                {{-- <input id="school_region" type="text" 
                                     class="form-control{{ $errors->has('school_region') ? ' is-invalid' : '' }}" 
                                     name="school_region" value="{{ old('school_region') }}"
-                                    placeholder="Provinsi" required autofocus>
+                                    placeholder="Provinsi" required autofocus> --}}
+                                <select name="school_region" id="school_region" class="form-control">
+                                    <option>Pilih Provinsi</option>
+                                </select>
                                 @if ($errors->has('school_region'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('school_region') }}</strong>
@@ -35,10 +38,13 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <input id="school_city" type="text" 
+                                {{-- <input id="school_city" type="text" 
                                     class="form-control{{ $errors->has('school_city') ? ' is-invalid' : '' }}" 
                                     name="school_city" value="{{ old('school_city') }}"
-                                    placeholder="Kota / Kabupaten" required autofocus>
+                                    placeholder="Kota / Kabupaten" required autofocus> --}}
+                                <select name="school_city" id="school_city" class="form-control">
+                                    <option>Pilih kota</option>
+                                </select>
                                 @if ($errors->has('school_city'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('school_city') }}</strong>
@@ -119,4 +125,28 @@
         </div>
     </div>
 </div>
+<script>
+    $(function() {
+        let school = $('#school_region');
+        let city = $('#school_city');
+        $.get('http://localhost:8000/ajax/province', function(data, status) {
+            data.map((val) => {
+                let option = $('<option' + ' value=' + val.id + '></option>');
+                option.text(val.province);
+                school.append(option);
+            });
+        });
+        school.change(function(event) {
+            let id = event.target.value;
+            city.empty();
+            $.get('http://localhost:8000/ajax/' + id + '/city', function(data, status) {
+                data.map((val) => {
+                    let option = $('<option' + ' value=' + val.city_name + '></option>');
+                    option.text(val.city_name);
+                    city.append(option);
+                });
+            });
+        });
+    });
+</script>
 @endsection

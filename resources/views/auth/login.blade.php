@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="login-flex">
-        <div class="login-flex__form-ct animated tada">
+        <div class="login-flex__form-ct animated zoomInDown">
             <div class="side-color"></div>
             <div class="login-flex__form">
                 <h2 class="secondary-color">Masuk akun</h2>

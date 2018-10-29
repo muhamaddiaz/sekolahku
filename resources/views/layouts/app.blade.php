@@ -10,7 +10,7 @@
     <title>@yield('title')</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        {{-- <nav class="navbar-custom">
+         <nav class="navbar-custom">
             <div class="container navbar-custom__flex">
                 <div class="navbar-custom__left-control">
                     <a href="{{ url('/') }}" class="navbar-custom__header primary-color">Sekolahku.id</a>
@@ -63,7 +63,7 @@
                     @endguest
                 </div>
             </div>
-        </nav> --}}
+        </nav>
         <!--<nav class="navbar fixed-top navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
