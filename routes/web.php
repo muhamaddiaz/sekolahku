@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('staticpages.index');
 })->middleware('guest');
 
+Route::resource('/user', 'UserController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
