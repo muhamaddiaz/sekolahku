@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use \App\School_info;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -16,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password',
+        'school_info_id', 'name', 'username', 'email', 'password',
     ];
 
     /**
@@ -29,6 +31,6 @@ class User extends Authenticatable
     ];
 
     public function schoolInfo() {
-        return $this->hasMany(\App\School_info::class);
+        return $this->belongsTo(School_info::class);
     }
 }

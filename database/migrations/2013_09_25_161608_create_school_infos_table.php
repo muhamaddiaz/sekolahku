@@ -15,15 +15,10 @@ class CreateSchoolInfosTable extends Migration
     {
         Schema::create('school_infos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
             $table->string('school_name');
             $table->string('school_region');
             $table->string('school_city');
             $table->string('phone_number');
-            $table->foreign('user_id')
-                    ->references('id')
-                    ->on('users')
-                    ->onDelete('cascade');
             $table->timestamps();
         });
     }
