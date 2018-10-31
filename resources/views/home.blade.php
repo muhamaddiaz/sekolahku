@@ -12,8 +12,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="{{route('main.notification')}}">
                         <img style="width: 40px; height: 40px" src={{asset('images/bell.svg')}} alt="no image"/>
+                        <span class="badge badge-secondary">{{$notifCount}}</span>
                     </a>
                 </li>
                 <li>
@@ -41,15 +42,7 @@
             </ul>
         </div>
     </div>
-    <div class="main-class primary-color" style="padding-top: 50px">
-        <div class="container">
-            <div class="main-class__greet-text pt-5 pb-5 animated bounceInDown">
-                <h2 style={styleSheet}>Selamat Datang, John Doe</h2>
-                <blockquote style={styleSheet}>
-                    "Stay Foolish, Stay Hungry"
-                    <footer>- Steve Jobs</footer>
-                </blockquote>
-            </div>
-        </div>
+    <div class="pt-5">
+        @yield('content-2')
     </div>
 @endsection

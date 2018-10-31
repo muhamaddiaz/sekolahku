@@ -32,3 +32,22 @@ Route::get('/ajax/{id}/city', function($id) {
     $citiesData = $prov->getCities()->get();
     return response()->json($citiesData);
 });
+
+Route::prefix('/staff')->group(function() {
+    Route::get('/pengajar', function() {
+        return view('menu.staff.pelajar');
+    })->name('staff.pengajar');
+    Route::get('/pelajar', function() {
+        return view('menu.staff.pengajar');
+    })->name('staff.pelajar');
+});
+
+Route::prefix('/excel')->group(function() {
+    Route::post('/import', 'ExcelController@import')->name('excel.import');
+});
+
+Route::name('main.')->group(function() {
+    Route::get('/notification', 'MainController@notification')->name('notification');
+    Route::get('/elibrary', 'MainController@elibrary')->name('elibrary');
+    Route::get('/emading', 'MainController@emading')->name('emading');
+});

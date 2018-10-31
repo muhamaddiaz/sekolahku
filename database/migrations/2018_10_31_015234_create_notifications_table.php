@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSchoolInfosTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class CreateSchoolInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('school_infos', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('school_name');
-            $table->string('school_region');
-            $table->string('school_city');
-            $table->string('phone_number');
+            $table->string('type')->default('info');
+            $table->string('message');
             $table->foreign('user_id')
-                    ->references('id')
-                    ->on('users')
-                    ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -35,6 +33,6 @@ class CreateSchoolInfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('school_infos');
+        Schema::dropIfExists('notifications');
     }
 }
