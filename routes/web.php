@@ -45,3 +45,9 @@ Route::prefix('/staff')->group(function() {
 Route::prefix('/excel')->group(function() {
     Route::post('/import', 'ExcelController@import')->name('excel.import');
 });
+
+Route::name('main.')->group(function() {
+    Route::get('/notification', 'MainController@notification')->name('notification');
+    Route::get('/elibrary', 'MainController@elibrary')->name('elibrary');
+    Route::get('/emading', 'MainController@emading')->name('emading');
+});

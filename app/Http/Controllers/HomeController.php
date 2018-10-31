@@ -24,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $notifCount = Auth::user()->notifications()->count();
         $school = Auth::user()->schoolInfo()->first();
-        return view('menu.mainmenu', ['school' => $school]);
+        return view('menu.mainmenu', ['school' => $school, 'notifCount' => $notifCount]);
     }
 }

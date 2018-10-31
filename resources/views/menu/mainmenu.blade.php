@@ -4,8 +4,13 @@
 
 @section('content-2')
     <div class="main-class primary-color">
-        <div class="container">
-            <div class="main-class__greet-text pt-5 pb-5 animated bounceInDown">
+        <div class="container pt-5">
+            @if(session('success'))
+                @component('components.alert', ['title' => 'success'])
+                    {{session('success')}}
+                @endcomponent
+            @endif
+            <div class="main-class__greet-text pb-5 animated bounceInDown">
                 <h1 style="font-size: 2rem; font-weight: 600">Selamat Datang, {{Auth::user()->name}}</h1>
                 <h2 style="font-size: 1.5rem; font-weight: 500">Administrator {{$school->school_name}}</h2>
             </div>

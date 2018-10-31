@@ -5,6 +5,12 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
+
+use App\Http\ViewComposers\HomeComposer;
+
+use App\Notification;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        View::composer('home', HomeComposer::class);
     }
 
     /**

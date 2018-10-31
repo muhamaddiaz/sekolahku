@@ -12,8 +12,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="{{route('main.notification')}}">
                         <img style="width: 40px; height: 40px" src={{asset('images/bell.svg')}} alt="no image"/>
+                        <span class="badge badge-secondary">{{$notifCount}}</span>
                     </a>
                 </li>
                 <li>

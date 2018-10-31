@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use \App\Notification;
 use \App\School_info;
 
 class User extends Authenticatable
@@ -32,5 +33,9 @@ class User extends Authenticatable
 
     public function schoolInfo() {
         return $this->belongsTo(School_info::class);
+    }
+
+    public function notifications() {
+        return $this->hasMany(Notification::class);
     }
 }
