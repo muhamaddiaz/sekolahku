@@ -8,8 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use \App\Notification;
 use \App\School_info;
+use \App\siswa;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -19,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'school_info_id', 'name', 'username', 'email', 'password',
+        'school_info_id', 'name', 'username', 'email', 'password', 'role'
     ];
 
     /**
@@ -30,6 +31,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function siswa() {
+        return $this->hasOne(siswa::class);
+    }
 
     public function schoolInfo() {
         return $this->belongsTo(School_info::class);

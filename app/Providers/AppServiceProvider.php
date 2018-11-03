@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         View::composer('home', HomeComposer::class);
+        View::composer('menu.mainmenu', HomeComposer::class);
     }
 
     /**

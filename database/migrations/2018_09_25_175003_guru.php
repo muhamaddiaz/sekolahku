@@ -15,18 +15,15 @@ class Guru extends Migration
     {
         Schema::create('guru', function (Blueprint $table) {
             $table->increments('id_guru');
-            $table->integer('id_sekolah')->unsigned();
+            $table->integer('school_info_id')->unsigned();
             $table->string('nama');
             $table->string('mata pelajaran');
             $table->string('wali_kelas')->nullable();
-            $table->string('password');
-            $table->string('email')->nullable();
-            $table->foreign('id_sekolah')
+            $table->foreign('school_info_id')
                     ->references('id')
                     ->on('school_infos')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

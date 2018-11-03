@@ -2,52 +2,36 @@
 
 use App\Province;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('staticpages.index');
 })->middleware('guest');
 
+Auth::routes(['verify' => true]);
+
 Route::resource('/user', 'UserController');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/ajax/province', 'AjaxController@province');
 
-Route::get('/ajax/province', function() {
-    $provData = Province::all();
-    return response()->json($provData);
+Route::get('/ajax/{id}/city', 'AjaxController@city');
+
+Route::middleware('auth')->group(function() {
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::prefix('/staff')->group(function() {
+        Route::get('/pengajar', 'StaffController@pengajar')->name('staff.pengajar');
+        Route::get('/pelajar', 'StaffController@pelajar')->name('staff.pelajar');
+    });
+
+    Route::prefix('/excel')->group(function() {
+        Route::post('/importGuru', 'ExcelController@importGuru')->name('excel.importPengajar');
+        Route::post('/importSiswa', 'ExcelController@importSiswa')->name('excel.importPelajar');
+    });
+
+    Route::name('main.')->group(function() {
+        Route::get('/notification', 'MainController@notification')->name('notification');
+        Route::get('/elibrary', 'MainController@elibrary')->name('elibrary');
+        Route::get('/emading', 'MainController@emading')->name('emading');
+    });
 });
 
-Route::get('/ajax/{id}/city', function($id) {
-    $prov = Province::findOrFail($id);
-    $citiesData = $prov->getCities()->get();
-    return response()->json($citiesData);
-});
-
-Route::prefix('/staff')->group(function() {
-    Route::get('/pengajar', function() {
-        return view('menu.staff.pelajar');
-    })->name('staff.pengajar');
-    Route::get('/pelajar', function() {
-        return view('menu.staff.pengajar');
-    })->name('staff.pelajar');
-});
-
-Route::prefix('/excel')->group(function() {
-    Route::post('/import', 'ExcelController@import')->name('excel.import');
-});
-
-Route::name('main.')->group(function() {
-    Route::get('/notification', 'MainController@notification')->name('notification');
-    Route::get('/elibrary', 'MainController@elibrary')->name('elibrary');
-    Route::get('/emading', 'MainController@emading')->name('emading');
-});

@@ -3,6 +3,7 @@
 @section('title', 'hello')
 
 @section('content')
+    {{-- <div id="root"></div> --}}
     <div class="navbar-custom__left" style="padding-top: 50px">
         <div class="navbar-custom__left--container">
             <ul class="navbar-custom__item-horizon navbar-custom__item-horizon--top">
@@ -23,19 +24,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="{{route('main.emading')}}">
                         <img style="width: 40px; height: 40px" src={{asset('images/clip.svg')}} alt="no image"/>
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="{{route('main.elibrary')}}">
                         <img style="width: 40px; height: 40px" src={{asset('images/library.svg')}} alt="no image"/>
                     </a>
                 </li>
             </ul>
             <ul class="navbar-custom__item-horizon navbar-custom__item-horizon--bottom">
                 <li>
-                    <a href="/">
+                    <a href="{{route('user.show', ['id' => Auth::user()->id])}}">
                         <img style="width: 40px; height: 40px" src={{asset('images/avatar/man-1.svg')}} alt="no image"/>
                     </a>
                 </li>

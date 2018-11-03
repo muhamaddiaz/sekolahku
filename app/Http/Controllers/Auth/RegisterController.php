@@ -71,21 +71,21 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $province = Province::findOrFail($data['school_region']);
-        $user = User::create([
+        $user = new User([
             'name' => $data['name'],
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
         
-        $school = new School_info([
+        $school = School_info::create([
             'school_name' => $data['school_name'], 
             'school_region' => $province->province, 
             'school_city' => $data['school_city'], 
             'phone_number'=> $data['phone_number']
         ]);
 
-        $user->schoolInfo()->save($school);
+        $school->users()->save($user);
 
         return $user;
     }
