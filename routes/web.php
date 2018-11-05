@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function() {
 
     Route::name('main.')->group(function() {
         Route::get('/notification', 'MainController@notification')->name('notification');
+        Route::delete('/notification/delete', 'MainController@notificationDelete')->name('notification.delete');
         Route::get('/elibrary', 'MainController@elibrary')->name('elibrary');
         Route::get('/emading', 'MainController@emading')->name('emading');
     });
