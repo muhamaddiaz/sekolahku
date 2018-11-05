@@ -17,6 +17,10 @@
 // Font-awesome
 @import '~font-awesome/scss/font-awesome';
 
+body {
+  overflow-x: hidden;
+}
+
 p {
   font-size: 20px;
 }

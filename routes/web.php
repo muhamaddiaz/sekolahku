@@ -25,8 +25,10 @@ Route::middleware('auth')->group(function() {
     });
 
     Route::prefix('/excel')->group(function() {
-        Route::post('/importGuru', 'ExcelController@importGuru')->name('excel.importPengajar');
-        Route::post('/importSiswa', 'ExcelController@importSiswa')->name('excel.importPelajar');
+        Route::middleware('isAdmin')->group(function() {
+            Route::post('/importGuru', 'ExcelController@importGuru')->name('excel.importPengajar');
+            Route::post('/importSiswa', 'ExcelController@importSiswa')->name('excel.importPelajar');
+        });
     });
 
     Route::name('main.')->group(function() {

@@ -3632,6 +3632,14 @@
           justify-content: space-between;
 }
 
+.mainmenu_container {
+  width: 100%;
+  height: 500px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -17151,6 +17159,10 @@ a.text-dark:focus {
   margin: 0;
   overflow: visible;
   clip: auto;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 p {

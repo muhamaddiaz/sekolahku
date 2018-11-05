@@ -15,7 +15,7 @@ class MadingSeeder extends Seeder
         $faker = Faker\Factory::create();
         for($i = 0; $i < 10; $i++) {
             DB::table('mading')->insert([
-                'id_siswa' => 1,
+                'siswa_id' => 1,
                 'judul_mading' => $faker->name,
                 'image_mading' => $faker->image(),
                 'deskripsi' => $faker->text(),

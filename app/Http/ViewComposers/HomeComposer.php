@@ -2,6 +2,7 @@
 
 namespace App\Http\ViewComposers;
 
+use App\Mading;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,10 +22,12 @@ class HomeComposer
         $countPelajar = $school->users()->where('role', 0)->count();
         $countPengajar = $school->users()->where('role', 2)->count();
         $countNotif = Auth::user()->notifications()->count();
+        $madingHigh = Mading::limit(6)->get();
         $view->with([
             'notifCount' => $countNotif,
             'pelajarCount' => $countPelajar,
-            'pengajarCount' => $countPengajar
+            'pengajarCount' => $countPengajar,
+            'madingHigh' => $madingHigh
         ]);
     }
 }
