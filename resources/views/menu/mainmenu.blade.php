@@ -10,6 +10,11 @@
                     {{session('success')}}
                 @endcomponent
             @endif
+            @if(session('danger'))
+                @component('components.alert', ['title' => 'danger'])
+                    {{session('danger')}}
+                @endcomponent
+            @endif
             <div class="main-class__greet-text pb-5 animated bounceInDown">
                 <h1 style="font-size: 2rem; font-weight: 600">Selamat Datang, {{Auth::user()->name}}</h1>
                 @if(Auth::user()->role == 1)

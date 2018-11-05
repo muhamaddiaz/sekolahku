@@ -20,10 +20,8 @@ class Siswa extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('nama');
             $table->string('NISN')->unique();
-            $table->string('kelas');
             $table->string('email');
             $table->boolean('osis')->nullable();
-            // $table->string('password');
             $table->foreign('user_id')
                     ->references('id')
                     ->on('users')

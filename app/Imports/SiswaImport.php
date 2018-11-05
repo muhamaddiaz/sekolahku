@@ -5,41 +5,50 @@ namespace App\Imports;
 use App\siswa;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-use Maatwebsite\Excel\Concerns\ToModel;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\ToCollection;
 
-class SiswaImport implements ToModel
+class SiswaImport implements ToCollection
 {
-    /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
-    public function model(array $row)
+    public function collection(Collection $rows)
     {
+        $stat = true;
         $id = Auth::user()->school_info_id;
+        foreach($rows as $row) {
+            $user = User::all();
+            if($user) {
+                foreach($user as $u) {
+                    if($row[2] == $u->email) {
+                        session()->flash('danger', 'Terdapat data duplikat');
+                        $stat = false;
+                    }
+                }
+            }
 
-        $user = new User([
-            'school_info_id' => $id,
-            'name' => $row[0],
-            'username' => $row[1],
-            'email' => $row[2],
-            'password' => bcrypt($row[3]),
-            'role' => 0
-        ]);
+            if($stat) {
+                $user = new User([
+                    'school_info_id' => $id,
+                    'name' => $row[0],
+                    'username' => $row[1],
+                    'email' => $row[2],
+                    'password' => bcrypt($row[3]),
+                    'role' => 0
+                ]);
 
-        $user->save();
+                $user->save();
 
-        $siswa = new siswa([
-            'school_info_id' => $id,
-            'user_id' => $user->id,
-            'nama' => $row[0],
-            'NISN' => $row[4],
-            'kelas' => $row[5],
-            'email' => $row[2],
-            'osis' => 0,
-        ]);
+                $siswa = new siswa([
+                    'school_info_id' => $id,
+                    'user_id' => $user->id,
+                    'kelas_id' => 1,
+                    'nama' => $row[0],
+                    'NISN' => $row[4],
+                    'email' => $row[2],
+                    'osis' => 0,
+                ]);
 
-        $x = $user->siswa()->save($siswa);
-        return [$user, $x];
+                $x = $user->siswa()->save($siswa);
+            }
+        }
     }
 }

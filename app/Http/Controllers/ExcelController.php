@@ -16,23 +16,49 @@ class ExcelController extends Controller
 
     public function importGuru(Request $req) {
         $notif = new Notification;
-        if($req->hasFile('excel_data_pengajar')) {
+        $extension = $req->file('excel_data_pengajar')->getClientOriginalExtension();
+        if($req->hasFile('excel_data_pengajar') && $extension == 'xlsx') {
             Excel::import(new UsersImport, $req->file('excel_data_pengajar'));
-            $notif->type = 'success';
-            $notif->message = 'Data pengajar berhasil di import';
+            if(!(session('danger'))) {
+                $notif->type = 'success';
+                $notif->message = 'Data pengajar berhasil di import';
+                Auth::user()->notifications()->save($notif);
+                return back()->with('success', 'Data pengajar berhasil di import');
+            } else {
+                $notif->type = 'danger';
+                $notif->message = 'Terdapat data duplikat, operasi dibatalkan';
+                Auth::user()->notifications()->save($notif);
+                return back();
+            }
+        } else {
+            $notif->type = 'danger';
+            $notif->message = 'format file tidak sesuai, operasi dibatalkan!';
             Auth::user()->notifications()->save($notif);
-            return back()->with('success', 'Data guruhbnhgnbnhhnh berhasil di import');
+            return back()->with('danger', 'format file tidak sesuai, operasi dibatalkan!');
         }
     }
 
     public function importSiswa(Request $req) {
         $notif = new Notification;
-        if($req->hasFile('excel_data_pelajar')) {
+        $extension = $req->file('excel_data_pelajar')->getClientOriginalExtension();
+        if($req->hasFile('excel_data_pelajar') && $extension == 'xlsx') {
             Excel::import(new SiswaImport, $req->file('excel_data_pelajar'));
-            $notif->type = 'success';
-            $notif->message = 'Data siswa berhasil di import';
+            if(!(session('danger'))) {
+                $notif->type = 'success';
+                $notif->message = 'Data pelajar berhasil di import';
+                Auth::user()->notifications()->save($notif);
+                return back()->with('success', 'Data pelajar berhasil di import');
+            } else {
+                $notif->type = 'danger';
+                $notif->message = 'Terdapat data duplikat, operasi dibatalkan';
+                Auth::user()->notifications()->save($notif);
+                return back();
+            }
+        } else {
+            $notif->type = 'danger';
+            $notif->message = 'format file tidak sesuai, operasi dibatalkan!';
             Auth::user()->notifications()->save($notif);
-            return back()->with('success', 'Data siswa berhasil di import');
+            return back()->with('danger', 'format file tidak sesuai, operasi dibatalkan!');
         }
     }
 }

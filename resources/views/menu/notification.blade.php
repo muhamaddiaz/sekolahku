@@ -4,7 +4,7 @@
 
 @section('content-2')
     <div class="container mt-5">
-        <h1 class="primary-color">Notification</h1>
+        <h1 class="primary-color">Notification Logs</h1>
         <hr>
         @foreach($notif as $n)
             @component('components.alert', ['title' => $n->type])

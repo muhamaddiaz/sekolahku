@@ -3,6 +3,7 @@
 namespace App;
 
 use \App\User;
+use \App\Kelas;
 use \App\siswa as Siswa;
 
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +13,7 @@ class siswa extends Model
     protected $table = 'siswa';
      
     protected $fillable = [
-        'school_info_id', 'nama', 'NISN', 'kelas', 'email', 'osis'
+        'school_info_id', 'kelas_id', 'nama', 'NISN', 'kelas', 'email', 'osis'
     ];
 
     public function user() {
@@ -28,6 +29,6 @@ class siswa extends Model
     }
     public function kelas()
     {
-    	return $this->belongsTo(Siswa::class);
+    	return $this->belongsTo(Kelas::class);
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class MainController extends Controller
 {
     public function notification() {
-        $notif = Auth::user()->notifications()->get();
+        $notif = Auth::user()->notifications()->orderBy('created_at', 'desc')->get();
         return view('menu.notification', ['notif' => $notif]);
     }
 
