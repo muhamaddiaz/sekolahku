@@ -14,8 +14,9 @@ class Siswa extends Migration
     public function up()
     {
         Schema::create('siswa', function (Blueprint $table) {
-            $table->increments('id_siswa');
+            $table->increments('id');
             $table->integer('school_info_id')->unsigned();
+            $table->integer('kelas_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('nama');
             $table->string('NISN')->unique();
@@ -33,7 +34,10 @@ class Siswa extends Migration
                     ->on('school_infos')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
-            // $table->rememberToken();
+            $table->foreign('kelas_id')
+                    ->references('id')
+                    ->on('kelas')
+                    ->onDelete('cascade');
             $table->timestamps();
         });
     }

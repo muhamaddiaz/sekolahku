@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function() {
     Route::prefix('/staff')->group(function() {
         Route::get('/pengajar', 'StaffController@pengajar')->name('staff.pengajar');
         Route::get('/pelajar', 'StaffController@pelajar')->name('staff.pelajar');
+        Route::get('/pengajar/table', 'StaffController@getPengajarTable')->name('staff.pengajar.table');
     });
 
     Route::prefix('/excel')->group(function() {

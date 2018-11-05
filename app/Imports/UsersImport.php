@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\User;
+use App\Guru;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\ToModel;
 

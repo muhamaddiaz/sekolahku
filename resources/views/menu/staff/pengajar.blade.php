@@ -12,7 +12,18 @@
             <br>
             <h1 style="font-size: 2rem; font-weight: 600">Anggota Pengajar</h1>
             <br>
-            @if($pengajar)
+            <table class="table table-bordered" id="users-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                    </tr>
+                </thead>
+            </table>
+            {{-- @if($pengajar)
                 <div class="row">
                     @foreach($pengajar as $p)
                         <div class="col-md-4 mt-3">
@@ -31,7 +42,26 @@
                 </div>
             @else
                 <h2>Pengajar belum di inputkan</h2>
-            @endif
+            @endif --}}
         </div>
     </div>
 @endsection
+
+@push('scripts')
+<script>
+$(function() {
+    $('#users-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('staff.pengajar.table') !!}',
+        columns: [
+            { data: 'id', name: 'id' },
+            { data: 'name', name: 'name' },
+            { data: 'email', name: 'email' },
+            { data: 'created_at', name: 'created_at' },
+            { data: 'updated_at', name: 'updated_at' }
+        ]
+    });
+});
+</script>
+@endpush

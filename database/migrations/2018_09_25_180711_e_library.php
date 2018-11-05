@@ -14,18 +14,17 @@ class ELibrary extends Migration
     public function up()
     {
          Schema::create('library', function (Blueprint $table) {
-            $table->increments('id_library');
-            $table->integer('id_siswa')->unsigned();
+            $table->increments('id');
+            $table->integer('siswa_id')->unsigned();
             $table->string('judul');
             $table->string('deskripsi');
             $table->string('kategori');
             $table->string('video')->nullable();
-            $table->foreign('id_siswa')
-                    ->references('id_siswa')
+            $table->foreign('siswa_id')
+                    ->references('id')
                     ->on('siswa')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-            $table->rememberToken();
             $table->timestamps();
         });    }
 

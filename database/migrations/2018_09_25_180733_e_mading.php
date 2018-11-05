@@ -14,14 +14,14 @@ class EMading extends Migration
     public function up()
     {
          Schema::create('mading', function (Blueprint $table) {
-            $table->increments('id_mading');
-            $table->integer('id_siswa')->unsigned();
+            $table->increments('id');
+            $table->integer('siswa_id')->unsigned();
             $table->string('judul_mading');
             $table->string('image_mading');
             $table->text('deskripsi');
             $table->string('kategori_mading');
-            $table->foreign('id_siswa')
-                    ->references('id_siswa')
+            $table->foreign('siswa_id')
+                    ->references('id')
                     ->on('siswa')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');

@@ -14,7 +14,7 @@ class Guru extends Migration
    public function up()
     {
         Schema::create('guru', function (Blueprint $table) {
-            $table->increments('id_guru');
+            $table->increments('id');
             $table->integer('school_info_id')->unsigned();
             $table->string('nama');
             $table->string('mata pelajaran');

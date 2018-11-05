@@ -14,21 +14,20 @@ class Feedback extends Migration
     public function up()
     {
          Schema::create('feedback', function (Blueprint $table) {
-            $table->increments('id_feedback');
-            $table->integer('id_siswa')->unsigned();
-            $table->integer('id_guru')->unsigned();
+            $table->increments('id');
+            $table->integer('siswa_id')->unsigned();
+            $table->integer('guru_id')->unsigned();
             $table->string('isi_feedback');
-            $table->foreign('id_siswa')
-                    ->references('id_siswa')
+            $table->foreign('siswa_id')
+                    ->references('id')
                     ->on('siswa')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-            $table->foreign('id_guru')
-                    ->references('id_guru')
+            $table->foreign('guru_id')
+                    ->references('id')
                     ->on('guru')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

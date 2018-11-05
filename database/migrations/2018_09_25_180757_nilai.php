@@ -14,16 +14,15 @@ class Nilai extends Migration
     public function up()
     {
          Schema::create('nilai', function (Blueprint $table) {
-            $table->increments('id_nilai');
-            $table->integer('id_siswa')->unsigned();
+            $table->increments('id');
+            $table->integer('siswa_id')->unsigned();
             $table->string('mata_pelajaran');
             $table->integer('nilai_pelajaran');
-            $table->foreign('id_siswa')
-                    ->references('id_siswa')
+            $table->foreign('siswa_id')
+                    ->references('id')
                     ->on('siswa')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

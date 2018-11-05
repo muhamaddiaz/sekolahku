@@ -3,6 +3,7 @@
 namespace App;
 
 use App\User;
+use App\Kelas;
 use Illuminate\Database\Eloquent\Model;
 
 class School_info extends Model
@@ -20,5 +21,8 @@ class School_info extends Model
     public function guru()
     {
     	return $this->hasMany('App\Model\guru');
+    }
+    public function kelas() {
+        return $this->hasMany(Kelas::class);
     }
 }

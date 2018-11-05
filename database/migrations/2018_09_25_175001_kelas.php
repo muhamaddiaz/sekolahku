@@ -14,22 +14,15 @@ class Kelas extends Migration
     public function up()
     {
          Schema::create('kelas', function (Blueprint $table) {
-            $table->increments('id_kelas');
-            $table->integer('id_siswa')->unsigned();
+            $table->increments('id');
+            $table->integer('school_info_id')->unsigned();
             $table->string('tingkat_kelas');
             $table->string('jurusan_kelas');
-            $table->integer('id_guru')->unsigned();
-            $table->foreign('id_siswa')
-                    ->references('id_siswa')
-                    ->on('siswa')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
-            $table->foreign('id_guru')
-                    ->references('id_guru')
-                    ->on('guru')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');   
-            $table->rememberToken();
+            $table->string('bagian_kelas');
+            $table->foreign('school_info_id')
+                ->references('id')
+                ->on('school_infos')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
