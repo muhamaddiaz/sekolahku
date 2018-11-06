@@ -3634,7 +3634,6 @@
 
 .mainmenu_container {
   width: 100%;
-  height: 500px;
   background-color: white;
   padding: 20px;
   border-radius: 10px;
@@ -17447,7 +17446,7 @@ p {
 }
 
 .main-class {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
 }
 

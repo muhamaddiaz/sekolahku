@@ -3,7 +3,7 @@
 @section('title', 'Main Menu')
 
 @section('content-2')
-    <div class="main-class text-white ml-5" 
+    <div class="main-class text-white ml-5 pb-3" 
     style="background-image: url({{asset('images/urban-event-space-model_925x.jpg')}}); background-size: 100% 100%; background-attachment: fixed">
         <div class="container pt-5">
             @if(session('success'))
@@ -27,20 +27,20 @@
                 @endif
             </div>
             <div class="mainmenu_container">
-                <div class="primary-color mb-3">
-                    <h2>Pusat kendali</h2>
+                <div style="display: flex; justify-content: center">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="pill" href="#terbaru">Terbaru</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#kelola">Kelola data</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#import">Input data Excel</a>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="pill" href="#terbaru">Terbaru</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#kelola">Kelola Data</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#import">Input data Excel</a>
-                    </li>
-                </ul>
+                
                 <br>
                 <div class="tab-content">
                     <div class="tab-pane container active" id="terbaru">
@@ -73,7 +73,7 @@
                     <div class="tab-pane container fade" id="kelola">
                         <div class="row">
                             @if(Auth::user()->role == 1)
-                                <div class="col-md-6">
+                                <div class="col-md-6 mt-3">
                                     <a href="{{route('staff.pengajar')}}">
                                         <div class="card primary-color-background text-white">
                                             <div class="card-body">
@@ -83,12 +83,32 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 mt-3">
                                     <a href="{{route('staff.pelajar')}}">
                                         <div class="card primary-color-background text-white">
                                             <div class="card-body">
                                                 <h3 class="card-title">Pelajar</h3>
                                                 <p class="card-text">{{$pelajarCount}} Siswa</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <a href="{{route('kelas.index')}}">
+                                        <div class="card primary-color-background text-white">
+                                            <div class="card-body">
+                                                <h3 class="card-title">Ruang kelas</h3>
+                                                <p class="card-text">10 Kelas</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <a href="">
+                                        <div class="card primary-color-background text-white">
+                                            <div class="card-body">
+                                                <h3 class="card-title">Mata Pelajaran</h3>
+                                                <p class="card-text">10 Mata Pelajaran</p>
                                             </div>
                                         </div>
                                     </a>

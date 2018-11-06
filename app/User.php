@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use \App\Notification;
 use \App\School_info;
 use \App\siswa;
+use \App\Guru;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -34,6 +35,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function siswa() {
         return $this->hasOne(siswa::class);
+    }
+
+    public function guru() {
+        return $this->hasOne(Guru::class);
     }
 
     public function schoolInfo() {

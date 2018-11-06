@@ -25,7 +25,7 @@ class UsersImport implements ToCollection
 
             if($stat) {
                 $id = Auth::user()->school_info_id;
-                User::create([
+                $user = new User([
                     'school_info_id' => $id,
                     'name' => $row[0],
                     'username' => $row[1],
@@ -33,6 +33,16 @@ class UsersImport implements ToCollection
                     'password' => bcrypt($row[3]),
                     'role' => 2
                 ]);
+
+                $user->save();
+
+                $guru = new Guru([
+                    'school_info_id' => $id,
+                    'nama' => $row[0],
+                    'mata_pelajaran' => 'Matematika',
+                ]);
+
+                $user->guru()->save($guru);
             }
         }
         return $stat;

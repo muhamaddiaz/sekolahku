@@ -37,5 +37,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/elibrary', 'MainController@elibrary')->name('elibrary');
         Route::get('/emading', 'MainController@emading')->name('emading');
     });
+
+    Route::resource('/kelas', 'KelasController');
 });
 

@@ -17,4 +17,11 @@ class Kelas extends Model
     public function siswa() {
         return $this->hasMany(Siswa::class);
     }
+
+    public function getFullKelasAttribute() {
+        $tingkat = $this->tingkat_kelas;
+        $jurusan = $this->jurusan_kelas;
+        $bagian = $this->bagian_kelas;
+        return "$tingkat $jurusan $bagian";
+    }
 }
