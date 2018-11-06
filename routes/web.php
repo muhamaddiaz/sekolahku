@@ -41,3 +41,6 @@ Route::middleware('auth')->group(function() {
     Route::resource('/kelas', 'KelasController');
 });
 
+Route::get('/profile/{id}','UserController@show')->name('show_profile');
+Route::get('/edit_profile/{id}','UserController@edit')->name('edit_profile');
+

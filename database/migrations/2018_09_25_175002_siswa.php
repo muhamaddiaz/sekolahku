@@ -21,6 +21,7 @@ class Siswa extends Migration
             $table->string('nama');
             $table->string('NISN')->unique();
             $table->string('email');
+            $table->string('foto')->nullable();
             $table->boolean('osis')->nullable();
             $table->foreign('user_id')
                     ->references('id')
