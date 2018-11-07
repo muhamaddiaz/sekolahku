@@ -73,7 +73,7 @@
                     <div class="tab-pane container fade" id="kelola">
                         <div class="row">
                             @if(Auth::user()->role == 1)
-                                <div class="col-md-6 mt-3">
+                                <div class="col-md-3 mt-3">
                                     <a href="{{route('staff.pengajar')}}">
                                         <div class="card primary-color-background text-white">
                                             <div class="card-body">
@@ -83,7 +83,7 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-md-6 mt-3">
+                                <div class="col-md-3 mt-3">
                                     <a href="{{route('staff.pelajar')}}">
                                         <div class="card primary-color-background text-white">
                                             <div class="card-body">
@@ -93,7 +93,7 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-md-6 mt-3">
+                                <div class="col-md-3 mt-3">
                                     <a href="{{route('kelas.index')}}">
                                         <div class="card primary-color-background text-white">
                                             <div class="card-body">
@@ -103,7 +103,7 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-md-6 mt-3">
+                                <div class="col-md-3 mt-3">
                                     <a href="">
                                         <div class="card primary-color-background text-white">
                                             <div class="card-body">

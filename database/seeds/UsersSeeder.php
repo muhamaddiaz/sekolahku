@@ -37,5 +37,18 @@ class UsersSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ]);
         }
+        for($i = 0; $i < 5; $i++) {
+            $name = $faker->name;
+            DB::table('users')->insert([
+                'school_info_id' => 1,
+                'name' => $name,
+                'username' => strtolower($name),
+                'email' => $faker->safeEmail,
+                'password' => bcrypt('secret'),
+                'role' => 2,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]);
+        }
     }
 }

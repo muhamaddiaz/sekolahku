@@ -16,6 +16,7 @@ class Kelas extends Migration
          Schema::create('kelas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('school_info_id')->unsigned();
+            $table->integer('guru_id')->unsigned();
             $table->string('tingkat_kelas');
             $table->string('jurusan_kelas');
             $table->string('bagian_kelas');
@@ -23,6 +24,9 @@ class Kelas extends Migration
                 ->references('id')
                 ->on('school_infos')
                 ->onDelete('cascade');
+            $table->foreign('guru_id')
+                ->references('id')
+                ->on('guru');
             $table->timestamps();
         });
     }

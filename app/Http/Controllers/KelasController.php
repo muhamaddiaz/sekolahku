@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Kelas;
+use App\Http\Requests\KelasRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,8 @@ class KelasController extends Controller
      */
     public function create()
     {
-        //
+        // Membuat kelas baru
+        
     }
 
     /**
@@ -47,7 +49,19 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Membuat kelas baru
+        //$request->validated();
+
+        $kelas = new Kelas;
+        $kelas->tingkat_kelas = $request->tingkat;
+        $kelas->jurusan_kelas = $request->jurusan;
+        $kelas->bagian_kelas = $request->bagian;
+        $kelas->guru_id = $request->wali;
+
+        $saved = Auth::user()->schoolInfo()
+                    ->first()->kelas()->save($kelas);
+
+        return back()->with('success', 'Kelas berhasil ditambahkan');
     }
 
     /**

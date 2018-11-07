@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kelas extends Model
 {
+    protected $fillable = [
+        'guru_id'
+    ];
+    
     protected $table = 'kelas';
 
     public function school() {
