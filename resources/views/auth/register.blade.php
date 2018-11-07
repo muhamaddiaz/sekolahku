@@ -116,7 +116,7 @@
                     </div>
                     <div class="form-group mt-2">
                         <button type="submit" class="btn btn-block secondary-color-background text-white mb-4">
-                            {{ __('register') }}
+                            {{ __('Register') }}
                         </button>
                         <span>Sudah punya akun ? <a href="{{ route('login') }}">Klik disini</a></span>
                     </div>

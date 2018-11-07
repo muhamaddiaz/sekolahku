@@ -5,7 +5,7 @@
 @section('content-2')
 
 	 <div class="main-class text-white ml-5" 
-     style="background-image: url({{asset('images/urban-event-space-model_925x.jpg')}}); background-size: 100% 100%; background-attachment: fixed; background-color: #000080">
+     style="background-image: url({{asset('images/urban-event-space-model_925x.jpg')}}); background-size: 100% 100%; background-attachment: fixed">
      	<div class="container pt-5">
 
      		<div class="main-class__greet-text pb-5 pt-5 animated bounceInDown text-center">
