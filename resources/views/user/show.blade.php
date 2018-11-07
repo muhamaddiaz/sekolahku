@@ -11,25 +11,25 @@
      		<div class="main-class__greet-text pb-5 pt-5 animated bounceInDown text-center">
      			<img style="width: 30px; height: 30px" src={{asset('images/avatar/man-1.svg')}} alt="no image"/>
                     @if(Auth::user()->role == 1)
-                     <?php $show = DB::select("SELECT * FROM users WHERE id=?",[Auth::user()->id]) ?>
-     			<h1 style="font-size: 2rem; font-weight: 600"><?php echo $show[0]->name ?></h1>
-                    <?php $data = DB::select("SELECT * FROM school_infos WHERE id=?",[$show[0]->id]) ?>
-     			<h2 style="font-size: 1.5rem; font-weight: 500"><?php echo $data[0]->school_name ?></h2>
+                         <?php $show = DB::select("SELECT * FROM users WHERE id=?",[Auth::user()->id]) ?>
+          			<h1 style="font-size: 2rem; font-weight: 600"><?php echo $show[0]->name ?></h1>
+                         <?php $data = DB::select("SELECT * FROM school_infos WHERE id=?",[$show[0]->id]) ?>
+          			<h2 style="font-size: 1.5rem; font-weight: 500"><?php echo $data[0]->school_name ?></h2>
                     @elseif(Auth::user()->role == 2)
-                    <?php $show = DB::select("SELECT * FROM guru WHERE id=?",[Auth::user()->id]) ?>
-                    <h1 style="font-size: 2rem; font-weight: 600"><?php echo $show[0]->nama ?></h1>
-                    <?php $data = DB::select("SELECT * FROM school_infos WHERE id=?",[$show[0]->id]) ?>
-                    <h2 style="font-size: 1.5rem; font-weight: 500"><?php echo $data[0]->school_name ?></h2>
+                         <?php $show = DB::select("SELECT * FROM guru WHERE id=?",[Auth::user()->id]) ?>
+                         <h1 style="font-size: 2rem; font-weight: 600"><?php echo $show[0]->nama ?></h1>
+                         <?php $data = DB::select("SELECT * FROM school_infos WHERE id=?",[$show[0]->id]) ?>
+                         <h2 style="font-size: 1.5rem; font-weight: 500"><?php echo $data[0]->school_name ?></h2>
                     @else
-                    <?php $show = DB::select("SELECT * FROM siswa WHERE id=?",[Auth::user()->id]) ?>
-                    <h1 style="font-size: 2rem; font-weight: 600"><?php echo $show[0]->nama ?></h1>
-                    <?php $data = DB::select("SELECT * FROM school_infos WHERE id=?",[$show[0]->id]) ?>
-                    <h2 style="font-size: 1.5rem; font-weight: 500"><?php echo $data[0]->school_name ?></h2>
+                         <?php $show = DB::select("SELECT * FROM siswa WHERE id=?",[Auth::user()->id]) ?>
+                         <h1 style="font-size: 2rem; font-weight: 600"><?php echo $show[0]->nama ?></h1>
+                         <?php $data = DB::select("SELECT * FROM school_infos WHERE id=?",[$show[0]->id]) ?>
+                         <h2 style="font-size: 1.5rem; font-weight: 500"><?php echo $data[0]->school_name ?></h2>
                     @endif
      		</div>
 
      		<div class="mainmenu_container">
-     			<div clas="row">
+     			<div class="row">
 <!-- User as admin -->
                               @if(Auth::user()->role == 1)
                               <?php $show = DB::select("SELECT * FROM users WHERE id=?",[Auth::user()->id]) ?>
