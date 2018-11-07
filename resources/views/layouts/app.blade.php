@@ -41,7 +41,7 @@
                 </div>
                 <div class="navbar-custom__left-control">
                     @guest
-                        <a href="{{ route('register') }}" class="button__gradient button__gradient--pilled">Coba sekarang!</a>
+                        <a href="{{ route('register') }}" class="button__gradient button__gradient--pilled">Daftarkan Sekolah</a>
                     @else
                         <div class="dropdown">
                             <a id="Dropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

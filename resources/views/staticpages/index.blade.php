@@ -120,9 +120,9 @@
                     Apakah anda sudah terdaftar ?,<br>
                     Ayo tunggu apalagi masuk sekarang juga
                 </p>
-                <button class="btn btn-outline-light">
+                <a class="btn btn-outline-light" href="{{ route('login') }}">
                     Masuk sekarang!
-                </button>
+                </a>
             </div>
         </div>
     </div>
