@@ -30,7 +30,7 @@
 
      		<div class="mainmenu_container">
      			<div clas="row">
-{{-- User as admin --}}
+<!-- User as admin -->
                               @if(Auth::user()->role == 1)
                               <?php $show = DB::select("SELECT * FROM users WHERE id=?",[Auth::user()->id]) ?>
                @if(!$show[0]->foto)
@@ -38,7 +38,9 @@
                               <img style="width: 50px; height: 50px" src={{asset('images/avatar/man-1.svg')}} alt="no image"/>
                </div>
                @else
-               {{-- Masih dalam proses edit --}}
+               <div class="col-md-4">
+                              <img style="width: 50px; height: 50px" src="{{url('profile_picture')}}/{{<?php echo $show[0]->foto ?>}}" />
+               </div>
                @endif
                <br/>
                <div class="col-md-8">
@@ -48,9 +50,9 @@
                               <h1 style="font-size: 2rem; font-weight: 600; color:black;">Job : Administrator</h1>
                               <?php $data = DB::select("SELECT * FROM school_infos WHERE id=?",[$show[0]->id]) ?>
                               <h1 style="font-size: 2rem; font-weight: 600; color:black;">School : <?php echo $data[0]->school_name ?></h1>
-                              <a class="btn btn-danger btn-block" href="" >Edit Your Profile</a>
+                              <a class="btn btn-danger btn-block" href="/edit_profile_menu/{{<?php echo $show[0]->id ?>}}" >Edit Your Profile</a>
                </div>
-{{-- User as guru --}}
+<!-- User as guru -->
                @elseif(Auth::user()->role == 2)
                <?php $show = DB::select("SELECT * FROM guru WHERE id=?",[Auth::user()->id]) ?>
                @if(!$show[0]->foto)
@@ -58,7 +60,9 @@
                               <img style="width: 50px; height: 50px" src={{asset('images/avatar/man-1.svg')}} alt="no image"/>
                </div>
                @else
-               {{-- Masih dalam proses edit --}}
+               <div class="col-md-4">
+                              <img style="width: 50px; height: 50px" src="{{url('profile_picture')}}/{{<?php echo $show[0]->foto ?>}}" />
+               </div>
                @endif
                <div class="col-md-8">
                               <h1 style="font-size: 2rem; font-weight: 600; color:black;">Name : <?php echo $show[0]->nama ?></h1>
@@ -67,9 +71,9 @@
                               <h1 style="font-size: 2rem; font-weight: 600; color:black;">Job : Guru</h1>
                               <?php $data = DB::select("SELECT * FROM school_infos WHERE id=?",[Auth::user()->id]) ?>
                               <h1 style="font-size: 2rem; font-weight: 600; color:black;">School : <?php echo $data[0]->school_name ?></h1>
-                              <a class="btn btn-danger btn-block" href="" >Edit Your Profile</a>
+                              <a class="btn btn-danger btn-block" href="/edit_profile_menu/{{<?php echo $show[0]->id ?>}}" >Edit Your Profile</a>
                </div>
-{{-- User as siswa --}}
+<!-- User as siswa -->
                               @else
                <?php $show = DB::select("SELECT * FROM siswa WHERE id=?",[Auth::user()->id]) ?>
                @if(!$show[0]->foto)
@@ -77,7 +81,9 @@
                               <img style="width: 50px; height: 50px" src={{asset('images/avatar/man-1.svg')}} alt="no image"/>
                </div>
                @else
-               {{-- Masih dalam proses edit --}}
+               <div class="col-md-4">
+                              <img style="width: 50px; height: 50px" src="{{url('profile_picture')}}/{{<?php echo $show[0]->foto ?>}}" />
+               </div>
                @endif
                <div class="col-md-8">
                               <h1 style="font-size: 2rem; font-weight: 600; color:black;">Name : <?php echo $show[0]->nama ?></h1>
@@ -87,7 +93,7 @@
                               <h1 style="font-size: 2rem; font-weight: 600; color:black;">Job : Siswa</h1>
                               <?php $data = DB::select("SELECT * FROM school_infos WHERE id=?",[Auth::user()->id]) ?>
                               <h1 style="font-size: 2rem; font-weight: 600; color:black;">School : <?php echo $data[0]->school_name ?></h1>
-                              <a class="btn btn-danger btn-block" href="" >Edit Your Profile</h5>
+                              <a class="btn btn-danger btn-block" href="/edit_profile_menu/{{<?php echo $show[0]->id ?>}}" >Edit Your Profile</a>
                               @endif
                </div>	
      		</div>
