@@ -3,9 +3,18 @@
 @section('title', 'Kelas')
 
 @section('content-2')
-    <div class="container">
+    <div class="container mt-5">
+        @if($errors->any())
+            @component('alert', ['title' => 'danger'])
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            @endcomponent
+        @endif
         <div class="kelas_greet">
-            <h2 class="primary-color mt-5">Kelas</h2>
+            <h2 class="primary-color">Kelas</h2>
         </div>
         <div class="row">
             @foreach($kelas as $k)
@@ -45,7 +54,8 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>                        
                     <div class="modal-body">
-                        <form action="{{route('kelas.create')}}" method="POST">
+                        <form action="{{route('kelas.store')}}" method="POST">
+                            @csrf
                             <label for="#tingkat">Tingkat: </label>
                             <select name="tingkat" id="tingkat" class="form-control">
                                 <option value="10">10</option>

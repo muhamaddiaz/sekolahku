@@ -16,6 +16,7 @@ class KelasSeeder extends Seeder
             for($j = 1; $j < 4; $j++) {
                 DB::table('kelas')->insert([
                     'school_info_id' => 1,
+                    'guru_id' => 1,
                     'tingkat_kelas' => $i,
                     'jurusan_kelas' => 'MIA',
                     'bagian_kelas' => $j

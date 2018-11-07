@@ -46,7 +46,8 @@ class UserController extends Controller
      */
     public function show()
     {
-        return view('user.show');
+        $school = Auth::user()->schoolInfo()->first();
+        return view('user.show', ['school' => $school]);
     }
 
     /**
