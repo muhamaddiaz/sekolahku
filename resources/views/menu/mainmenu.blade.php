@@ -4,7 +4,7 @@
 
 @section('content-2')
     <div class="main-class text-white ml-5 pb-3" 
-    style="background-image: url({{asset('images/urban-event-space-model_925x.jpg')}}); background-size: 100% 100%; background-attachment: fixed">
+    style="background-image: url({{asset('images/space.jpg')}}); background-size: 100% 100%; background-attachment: fixed">
         <div class="container pt-5">
             @if(session('success'))
                 @component('components.alert', ['title' => 'success'])
