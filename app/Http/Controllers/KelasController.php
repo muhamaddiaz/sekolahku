@@ -113,6 +113,10 @@ class KelasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Menghapus kelas yang dipilih oleh admin
+
+        Auth::user()->schoolInfo()->first()->kelas()->where('id', $id)->delete();
+        
+        return back()->with('success', 'Kelas telah berhasil dihapus');
     }
 }

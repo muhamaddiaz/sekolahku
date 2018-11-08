@@ -24,7 +24,13 @@
          <nav class="navbar-custom">
             <div class="container navbar-custom__flex">
                 <div class="navbar-custom__left-control">
-                    <a href="{{ url('/') }}" class="navbar-custom__header primary-color">Sekolahku.id</a>
+                    @if(Auth::user())
+                        <a href="{{ url('/') }}" class="navbar-custom__header primary-color">
+                            {{Auth::user()->schoolInfo()->first()->school_name}}
+                        </a>
+                    @else
+                        <a href="{{ url('/') }}" class="navbar-custom__header primary-color">Sekolahku.id</a>
+                    @endif
                     <ul class="navbar-custom__list-item">
                         @guest
                         <li>

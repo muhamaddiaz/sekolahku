@@ -5,12 +5,17 @@
 @section('content-2')
     <div class="container mt-5">
         @if($errors->any())
-            @component('alert', ['title' => 'danger'])
+            @component('components.alert', ['title' => 'danger'])
                 <ul>
                     @foreach($errors->all() as $error)
                         <li>{{$error}}</li>
                     @endforeach
                 </ul>
+            @endcomponent
+        @endif
+        @if(session('success'))
+            @component('components.alert', ['title' => 'success'])
+                {{session('success')}}
             @endcomponent
         @endif
         <div class="kelas_greet">

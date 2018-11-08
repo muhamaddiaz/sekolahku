@@ -16,16 +16,44 @@
                     {{session('danger')}}
                 @endcomponent
             @endif
-            <div class="main-class__greet-text pb-5 pt-5 animated bounceInDown text-center">
-                <h1 style="font-size: 2rem; font-weight: 600">Selamat Datang, {{Auth::user()->name}}</h1>
-                @if(Auth::user()->role == 1)
-                    <h2 style="font-size: 1.5rem; font-weight: 500">Administrator {{$school->school_name}}</h2>
-                @elseif(Auth::user()->role == 2)
-                    <h2 style="font-size: 1.5rem; font-weight: 500">Tenaga Pengajar {{$school->school_name}}</h2>
-                @else
-                    <h2 style="font-size: 1.5rem; font-weight: 500">Pelajar {{$school->school_name}}</h2>
-                @endif
+            <div class="greet-user text-white mt-3">
+                <h1>SMAN 1 Parakansalak System</h1>
+                <h2>Selamat datang kembali</h2>
             </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="main-class__greet-text mb-4 mt-4 p-5 animated bounceInDown primary-color" style="background-color: white; border-radius: 10px">
+                        <div class="row">
+                            <div class="col-md-3 text-center">
+                                <img style="width: 100px; height: 100px" src={{asset('images/avatar/man-1.svg')}} alt="no image"/>
+                            </div>
+                            <div class="col-md-9 pt-3">
+                                <h1 style="font-size: 2rem; font-weight: 600">{{Auth::user()->name}}</h1>
+                                @if(Auth::user()->role == 1)
+                                    <h2 style="font-size: 1.5rem; font-weight: 500">Administrator {{$school->school_name}}</h2>
+                                @elseif(Auth::user()->role == 2)
+                                    <h2 style="font-size: 1.5rem; font-weight: 500">Tenaga Pengajar {{$school->school_name}}</h2>
+                                @else
+                                    <h2 style="font-size: 1.5rem; font-weight: 500">Pelajar {{$school->school_name}}</h2>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="main-class__greet-text mb-4 mt-4 p-5 animated bounceInDown primary-color" style="background-color: white; border-radius: 10px">
+                        <h1 style="font-size: 2.8rem; font-weight: 600">4123</h1>
+                        @if(Auth::user()->role == 1)
+                            <h2 style="font-size: 1.5rem; font-weight: 500">Administrator {{$school->school_name}}</h2>
+                        @elseif(Auth::user()->role == 2)
+                            <h2 style="font-size: 1.5rem; font-weight: 500">Tenaga Pengajar {{$school->school_name}}</h2>
+                        @else
+                            <h2 style="font-size: 1.5rem; font-weight: 500">Reputasi</h2>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            
             <div class="mainmenu_container">
                 <div style="display: flex; justify-content: center">
                     <ul class="nav nav-pills">
@@ -51,19 +79,21 @@
                             </div>
                         </div>
                         <div class="terbaru">
-                            <h2 class="primary-color mb-3">E - Mading</h2>
-                            <div class="emading-highlight">
+                            <div class="emading-highlight mt-3">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="card-columns">
-                                            @foreach($madingHigh as $m)
-                                            <div class="card">
-                                                <div class="card-body primary-color-background">
-                                                    <h4 class="card-title">{{$m->judul_mading}}</h4>
-                                                    <p class="card-text">{{$m->deskripsi}}</p>
+                                        <div class="primary-color-background p-4" style="border-radius: 10px">
+                                            <h2 class="mb-3">E - Mading</h2>
+                                            <div class="card-columns">
+                                                @foreach($madingHigh as $m)
+                                                <div class="card primary-color">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">{{$m->judul_mading}}</h4>
+                                                        <p class="card-text">{{$m->deskripsi}}</p>
+                                                    </div>
                                                 </div>
+                                                @endforeach
                                             </div>
-                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

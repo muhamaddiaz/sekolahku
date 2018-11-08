@@ -33,6 +33,11 @@
                         <img style="width: 30px; height: 30px" src={{asset('images/library.svg')}} alt="no image"/>
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('main.elibrary')}}">
+                        <img style="width: 30px; height: 30px" src={{asset('images/library.svg')}} alt="no image"/>
+                    </a>
+                </li>
             </ul>
             <ul class="navbar-custom__item-horizon navbar-custom__item-horizon--bottom">
                 <li>
