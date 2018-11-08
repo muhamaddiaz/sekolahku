@@ -9,3 +9,19 @@
     padding: 20px;
     border-radius: 10px;
 }
+
+.class-mates_container {
+    min-height: 100vh;
+    background-size: 100% 100%;
+    .class-mates_faded {
+        width: 100%;
+        min-height: 100vh;
+        background-color: rgba(255, 255, 255, 0.5);
+        .class-mates_head-text {
+            h1 {
+                font-size: 3rem;
+                font-weight: 400;
+            }
+        }
+    }
+}

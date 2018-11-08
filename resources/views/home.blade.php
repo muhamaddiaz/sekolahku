@@ -7,35 +7,35 @@
     <div class="navbar-custom__left" style="padding-top: 50px">
         <div class="navbar-custom__left--container">
             <ul class="navbar-custom__item-horizon navbar-custom__item-horizon--top">
-                <li>
+                <li title="Beranda">
                     <a href="/">
                         <img style="width: 30px; height: 30px" src={{asset('images/school.svg')}} alt="no image"/>
                     </a>
                 </li>
-                <li>
+                <li title="Notifikasi">
                     <a href="{{route('main.notification')}}">
                         <img style="width: 30px; height: 30px" src={{asset('images/bell.svg')}} alt="no image"/>
                         <span class="badge badge-secondary">{{$notifCount}}</span>
                     </a>
                 </li>
-                <li>
+                <li title="Nilai">
                     <a href="/">
                         <img style="width: 30px; height: 30px" src={{asset('images/pie-chart.svg')}} alt="no image"/>
                     </a>
                 </li>
-                <li>
+                <li title="E - Mading">
                     <a href="{{route('main.emading')}}">
                         <img style="width: 30px; height: 30px" src={{asset('images/clip.svg')}} alt="no image"/>
                     </a>
                 </li>
-                <li>
+                <li title="E - Library">
                     <a href="{{route('main.elibrary')}}">
                         <img style="width: 30px; height: 30px" src={{asset('images/library.svg')}} alt="no image"/>
                     </a>
                 </li>
-                <li>
-                    <a href="{{route('main.elibrary')}}">
-                        <img style="width: 30px; height: 30px" src={{asset('images/library.svg')}} alt="no image"/>
+                <li title="ClassMates">
+                    <a href="{{route('classmates')}}">
+                        <img style="width: 30px; height: 30px" src={{asset('svg/collaboration.svg')}} alt="no image"/>
                     </a>
                 </li>
             </ul>

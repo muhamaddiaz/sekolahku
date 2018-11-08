@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function() {
     });
 
     Route::resource('/kelas', 'KelasController');
+    Route::resource('/forum', 'ForumController');
+    Route::get('/classmates', 'KelasController@classMates')->name('classmates');
 });
 
 Route::get('/profile','UserController@show')->name('show_profile');

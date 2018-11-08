@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class KelasController extends Controller
 {
+    public function classMates() {
+        $kelas = Auth::user()->siswa()->first()->kelas()->first();
+        return view('kelas.classmates', [
+            'kelas' => $kelas
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -73,7 +79,7 @@ class KelasController extends Controller
     public function show($id)
     {
         // Untuk melihat setiap informasi yang ada didalam kelas
-        
+        $id = decrypt($id);
         $kelas = Kelas::find($id);
         $siswa = $kelas->siswa()->get();
         return view('kelas.show', [

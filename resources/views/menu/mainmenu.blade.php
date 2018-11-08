@@ -55,21 +55,47 @@
             </div>
             
             <div class="mainmenu_container">
-                <div style="display: flex; justify-content: center">
-                    <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="pill" href="#terbaru">Terbaru</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="#kelola">Kelola data</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="#import">Input data Excel</a>
-                        </li>
-                    </ul>
-                </div>
-                
+                @if(Auth::user()->role == 1)
+                    <div style="display: flex; justify-content: center">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="pill" href="#terbaru">Terbaru</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="pill" href="#kelola">Kelola data</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="pill" href="#import">Input data Excel</a>
+                            </li>
+                        </ul>
+                    </div>
+                @endif
                 <br>
+                @if(Auth::user()->role == 0)
+                    <div class="class-mates_highlight primary-color">
+                        <div class="text-center">
+                            <h2 class="primary-color">
+                                ClassMates @ {{Auth::user()->siswa()->first()->kelas()->first()->full_kelas}}
+                            </h2>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            @foreach($classMates as $c)
+                                <div class="col-md-3 mt-3">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <img src="{{asset('images/avatar/boy.svg')}}" 
+                                                style="width: 80px; height: 80px"
+                                                class="img-rounded"
+                                                alt="pengajar.svg" />
+                                            <p class="card-text mb-0 mt-3">{{$c->nama}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
                 <div class="tab-content">
                     <div class="tab-pane container active" id="terbaru">
                         <div class="jumbotron text-center primary-color-background text-white">
