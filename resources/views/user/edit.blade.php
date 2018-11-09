@@ -49,30 +49,25 @@
 	 			<form class="form-horizontal" action="/edit_profile/{{<?php echo $show[0]->id ?>}}" method="post" enctype="multipart/form-data">
 	 			{{ csrf_field() }}
 	 			<input type="hidden" name="id" value="<?php echo $show[0]->id ?>">
-	 			<div class="col-md-12 text-center">
+	 			<div class="col-md-12">
 	 				<div class="form-group">
-	 					@if(!$show[0]->foto)
-	 					<img style="width: 50px; height: 50px" src={{asset('images/avatar/man-1.svg')}} alt="no-image">
+	 					<label class="control-label" style="font-size: 1rem; font-weight: 600; color:#000080">Upload Your New Profile Picture : </label>
 	 					<input class="form-control" type="file" name="image" placeholder="Upload Your New Profile Picture">
-	 					@else
-	 					<img style="width: 50px; height: 50px" src="{{url('profile_picture')}}/{{<?php echo $show[0]->foto ?>}}" />
-	 					<input class="form-control" type="file" name="image" placeholder="Upload Your New Profile Picture">
-	 					@endif
 	 				</div>
 	 				<div class="form-group">
-	 					<label class="control-label">Name : </label>
+	 					<label class="control-label" style="font-size: 1rem; font-weight: 600; color:#000080">Name : </label>
 	 					<input class="form-control" type="text" name="name" value="<?php echo $show[0]->name ?>">
 	 				</div>
 	 				<div class="form-group">
-	 					<label class="control-label">Username : </label>
+	 					<label class="control-label" style="font-size: 1rem; font-weight: 600; color:#000080">Username : </label>
 	 					<input class="form-control" type="text" name="username" value="<?php echo $show[0]->username ?>">
 	 				</div>
 		 			<div class="form-group">
-	 					<label class="control-label">Email : </label>
+	 					<label class="control-label" style="font-size: 1rem; font-weight: 600; color:#000080">Email : </label>
 	 					<input class="form-control" type="text" name="email" value="<?php echo $show[0]->email ?>">
 	 				</div>
 	 				<div class="form-group">
-	 					<label class="control-label">Password : </label>
+	 					<label class="control-label" style="font-size: 1rem; font-weight: 600; color:#000080">Password : </label>
 	 					<input class="form-control" type="password" name="password" value="<?php echo $show[0]->password ?>">
 		 			</div>
 		 			<div class="form-group">
@@ -86,16 +81,11 @@
 		 		<form class="form-horizontal" action="/edit_profile/{{<?php echo $show[0]->id ?>}}" method="post" enctype="multipart/form-data">
 		 			<input type="hidden" name="id" value="<?php echo $show[0]->id ?>">
 		 			<div class="form-group">
-	 					@if(!$show[0]->foto)
-	 					<img style="width: 50px; height: 50px" src={{asset('images/avatar/man-1.svg')}} alt="no-image">
+	 					<label class="control-label" style="font-size: 1rem; font-weight: 600; color:#000080">Upload Your New Profile Picture : </label>
 	 					<input class="form-control" type="file" name="image" placeholder="Upload Your New Profile Picture">
-	 					@else
-	 					<img style="width: 50px; height: 50px" src="{{url('profile_picture')}}/{{<?php echo $show[0]->foto ?>}}" />
-	 					<input class="form-control" type="file" name="image" placeholder="Upload Your New Profile Picture">
-	 					@endif
 	 				</div>
 	 				<div class="form-group">
-	 					<label class="control-label">Name : </label>
+	 					<label class="control-label" style="font-size: 1rem; font-weight: 600; color:#000080">Name : </label>
 	 					<input class="form-control" type="text" name="name" value="<?php echo $show[0]->nama ?>">
 	 				</div>
 	 				<div class="form-group">
@@ -108,20 +98,15 @@
 		 		<form class="form-horizontal" action="/edit_profile/{{<?php echo $show[0]->id ?>}}" method="post" enctype="multipart/form-data">
 		 			<input type="hidden" name="id" value="<?php echo $show[0]->id ?>">
 		 			<div class="form-group">
-	 					@if(!$show[0]->foto)
-	 					<img style="width: 50px; height: 50px" src={{asset('images/avatar/man-1.svg')}} alt="no-image">
+	 					<label class="control-label" style="font-size: 1rem; font-weight: 600; color:#000080">Upload Your New Profile Picture : </label>
 	 					<input class="form-control" type="file" name="image" placeholder="Upload Your New Profile Picture">
-	 					@else
-	 					<img style="width: 50px; height: 50px" src="{{url('profile_picture')}}/{{<?php echo $show[0]->foto ?>}}" />
-	 					<input class="form-control" type="file" name="image" placeholder="Upload Your New Profile Picture">
-	 					@endif
 	 				</div>
 	 				<div class="form-group">
-	 					<label class="control-label">Name : </label>
+	 					<label class="control-label" style="font-size: 1rem; font-weight: 600; color:#000080">Name : </label>
 	 					<input class="form-control" type="text" name="name" value="<?php echo $show[0]->nama ?>">
 	 				</div>
 	 				<div class="form-group">
-	 					<label class="control-label">Email : </label>
+	 					<label class="control-label" style="font-size: 1rem; font-weight: 600; color:#000080">Email : </label>
 	 					<input class="form-control" type="text" name="email" value="<?php echo $show[0]->email ?>">
 	 				</div>
 	 				<div class="form-group">
