@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use \App\Mading;
-
+use App\Mading;
+use App\User;
+use App\Siswa;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class MadingController extends Controller
@@ -26,7 +28,17 @@ class MadingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $mading = new Mading;
+        $mading->judul_mading = $request->judul;
+        $mading->kategori = $request->kategori;
+        $mading->deskripsi = $request->deskripsi;
+        $gambar = $request->file('image_mading');
+        $namaFile = $gambar->getClientOriginalName();
+        $request->file('image_mading')->move('mading_picture', $namaFile);
+        $mading->image_mading = $namaFile;
+
+        $save = Auth::user()->siswa()->first()->mading()->save($mading);
+        return redirect()->route('emading');
     }
 
     /**
@@ -37,7 +49,9 @@ class MadingController extends Controller
      */
     public function show($id)
     {
-        //
+        $mading = Mading::find($id);
+        $siswa = $mading->siswa()->first();
+        return view('mading.show');
     }
 
     /**
