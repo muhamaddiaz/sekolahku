@@ -48,7 +48,7 @@
             </ul>
         </div>
     </div>
-    <div class="pt-5">
+    <div>
         @yield('content-2')
     </div>
 @endsection

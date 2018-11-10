@@ -3640,19 +3640,24 @@
 }
 
 .class-mates_container {
-  min-height: 100vh;
-  background-size: 100% 100%;
+  background-size: cover;
 }
 
 .class-mates_container .class-mates_faded {
   width: 100%;
-  min-height: 100vh;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .class-mates_container .class-mates_faded .class-mates_head-text h1 {
   font-size: 3rem;
   font-weight: 400;
+}
+
+.forum__create-button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
 }
 
 /*!
