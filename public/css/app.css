@@ -3653,6 +3653,12 @@
   font-weight: 400;
 }
 
+.forum_discussion--greet {
+  background-color: navy;
+  color: white;
+  padding: 50px 0;
+}
+
 .forum__create-button {
   position: fixed;
   bottom: 0;
@@ -4246,8 +4252,8 @@ pre code {
 
 .container {
   width: 100%;
-  padding-right: 60px;
-  padding-left: 50px;
+  padding-right: 15px;
+  padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }

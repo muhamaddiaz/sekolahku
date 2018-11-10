@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Forum;
 use Illuminate\Http\Request;
 
 class ForumController extends Controller
@@ -43,9 +44,14 @@ class ForumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Forum $forum)
     {
-        //
+        // Melihat Forum
+        $user = $forum->user()->first()->siswa()->first()->nama;
+        return view('forum.show', [
+            'forum' => $forum,
+            'user' => $user
+        ]);
     }
 
     /**

@@ -26,7 +26,10 @@
                             <div>
                                 <p class="card-text">{{$f->description}}</p>
                             </div>
+                            <br>
+                            <a href="{{ route('forum.show', $f->id) }}" class="btn btn-outline-primary">Lihat diskusi</a>
                         </div>
+                        
                     </div>
                 @endforeach
             </div>
