@@ -42,7 +42,8 @@ Route::middleware('auth')->group(function() {
     Route::resource('/forum', 'ForumController');
     Route::get('/classmates', 'KelasController@classMates')->name('classmates');
 });
-
+Route::get('/create_mading','MadingController@create')->name('create_mading');
+Route::post('/store_mading','MadingController@store')->name('store_mading');
 Route::get('/profile','UserController@show')->name('show_profile');
 Route::get('/edit_profile_menu/{id}','UserController@edit')->name('edit_profile_menu');
 Route::post('/edit_profile/{id}', 'UserController@update')->name('edit_profile');

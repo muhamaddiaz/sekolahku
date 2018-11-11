@@ -115,10 +115,18 @@
                                                 <div class="card primary-color">
                                                     <div class="card-body">
                                                         <h4 class="card-title">{{$m->judul_mading}}</h4>
-                                                        <p class="card-text">{{$m->deskripsi}}</p>
+                                                        <img style="width: 100%; height: 100%" src="{{url('mading_picture')}}/{{$m->image_mading }}" alt="no image"/>
+                                                        <p class="card-text">{{ substr($m->deskripsi, 0, 50)}}{{ strlen($m->deskripsi) > 50 ? "..." : ""}}
+                                                        </p>
+                                                        <a href="/show/{{$m->id}}">Read More</a>
                                                     </div>
                                                 </div>
                                                 @endforeach
+                                                <div class="card primary-color">
+                                                    <div class="card-body">
+                                                        <a class="card-text" href="/create_mading">Store Your Information</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
