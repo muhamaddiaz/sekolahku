@@ -44,6 +44,9 @@ Route::middleware('auth')->group(function() {
 });
 Route::get('/create_mading','MadingController@create')->name('create_mading');
 Route::post('/store_mading','MadingController@store')->name('store_mading');
+Route::get('/edit_mading/{id}','MadingController@show')->name('edit_mading');
+Route::post('/update_mading/{id}','MadingController@update')->name('update_mading');
+Route::get('/destroy_mading/{id}','MadingController@destroy')->name('destroy_mading');
 Route::get('/profile','UserController@show')->name('show_profile');
 Route::get('/edit_profile_menu/{id}','UserController@edit')->name('edit_profile_menu');
 Route::post('/edit_profile/{id}', 'UserController@update')->name('edit_profile');

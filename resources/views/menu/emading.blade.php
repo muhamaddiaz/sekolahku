@@ -31,9 +31,17 @@
         			<img style="width: 100%; height: 100%" src="{{url('mading_picture')}}/{{$m->image_mading }}" alt="no image"/>
         			<p class="card-text" style="color:black;">{{$m->deskripsi}}</p>
       			</div>
+      			@if($data->id == $m->siswa_id)
+      			<div class="modal-footer">
+      			<a href="/edit_mading/{{$m->id}}">Edit</a>
+      			<a href="/destroy_mading/{{$m->id}}">Delete</a>
+        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>	
+      			</div>
+      			@else
       			<div class="modal-footer">
         		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>	
       			</div>
+      			@endif
     		</div>
   			</div>
 		</div>
