@@ -31,7 +31,7 @@
                          @else
                          <img style="width: 30px; height: 30px" src="{{url('profile_picture')}}/{{$siswa->foto }}"" alt="no image"/>
                          @endif
-                         <h1 style="font-size: 2rem; font-weight: 600">{{Auth::user()->name}}</h1>
+                         <h1 style="font-size: 2rem; font-weight: 600">{{$siswa->nama}}</h1>
                          <h2 style="font-size: 1.5rem; font-weight: 500">{{$school->school_name}}</h2>
                     @endif
      		</div>

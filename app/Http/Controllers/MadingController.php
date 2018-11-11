@@ -30,15 +30,15 @@ class MadingController extends Controller
     {
         $mading = new Mading;
         $mading->judul_mading = $request->judul;
-        $mading->kategori = $request->kategori;
+        $mading->kategori_mading = $request->kategori;
         $mading->deskripsi = $request->deskripsi;
-        $gambar = $request->file('image_mading');
+        $gambar = $request->file('gambar');
         $namaFile = $gambar->getClientOriginalName();
-        $request->file('image_mading')->move('mading_picture', $namaFile);
+        $request->file('gambar')->move('mading_picture', $namaFile);
         $mading->image_mading = $namaFile;
 
         $save = Auth::user()->siswa()->first()->mading()->save($mading);
-        return redirect()->route('emading');
+        return redirect()->route('main.emading');
     }
 
     /**
@@ -75,5 +75,14 @@ class MadingController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function create()
+    {
+        $school = Auth::user()->schoolInfo()->first();
+        $siswa = Auth::user()->siswa()->first();
+        return view('mading.store',[
+            'siswa' => $siswa,
+            'school' => $school
+        ]);
     }
 }
