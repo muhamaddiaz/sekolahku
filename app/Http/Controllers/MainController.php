@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mading;
+use App\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,6 +24,12 @@ class MainController extends Controller
     }
 
     public function emading() {
-        return view('menu.emading');
+        $mading = Mading::all();
+        $user = Siswa::all('id');
+        $siswa = Mading::where('id_mading',$user)->get();
+        return view('menu.emading',[
+            'mading' => $mading,
+            'siswa' => $siswa
+        ]);
     }
 }
