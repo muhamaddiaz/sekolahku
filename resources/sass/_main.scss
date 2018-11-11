@@ -11,12 +11,10 @@
 }
 
 .class-mates_container {
-    min-height: 100vh;
-    background-size: 100% 100%;
+    background-size: cover;
     .class-mates_faded {
         width: 100%;
-        min-height: 100vh;
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(255, 255, 255, 0.8);
         .class-mates_head-text {
             h1 {
                 font-size: 3rem;
@@ -24,4 +22,17 @@
             }
         }
     }
+}
+
+.forum_discussion--greet {
+    background-color: navy;
+    color: white;
+    padding: 50px 0;
+}
+
+.forum__create-button {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
 }

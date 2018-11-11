@@ -10,6 +10,7 @@ use \App\Notification;
 use \App\School_info;
 use \App\siswa;
 use \App\Guru;
+use \App\Forum;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -47,5 +48,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function notifications() {
         return $this->hasMany(Notification::class);
+    }
+    
+    public function forums() {
+        return $this->hasMany(Forum::class);
     }
 }

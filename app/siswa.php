@@ -22,7 +22,7 @@ class siswa extends Model
     }
     public function school()
     {
-    	return $this->belongsTo('App\Model\School_info');
+    	return $this->belongsTo('App\School_info');
     }
     public function mading()
     {

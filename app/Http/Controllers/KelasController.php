@@ -11,8 +11,12 @@ class KelasController extends Controller
 {
     public function classMates() {
         $kelas = Auth::user()->siswa()->first()->kelas()->first();
+        $mates = Auth::user()->siswa()->first()->kelas()->first()->siswa()->get();
+        $forums = Auth::user()->schoolInfo()->first()->forums()->get();
         return view('kelas.classmates', [
-            'kelas' => $kelas
+            'kelas' => $kelas,
+            'mates' => $mates,
+            'forums' => $forums
         ]);
     }
     /**

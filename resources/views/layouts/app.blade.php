@@ -21,6 +21,7 @@
 </head>
 <body>
     <div id="app">
+        @if(!Auth::user())
          <nav class="navbar-custom">
             <div class="container navbar-custom__flex">
                 <div class="navbar-custom__left-control">
@@ -70,6 +71,7 @@
                 </div>
             </div>
         </nav>
+        @endif
         <!--<nav class="navbar fixed-top navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
