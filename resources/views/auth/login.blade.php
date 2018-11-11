@@ -44,6 +44,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group text-center">
+                                {!! Recaptcha::render() !!}
+                            </div>
                             <div class="form-group">
                                 <button type="submit" class="btn secondary-color-background text-white btn-block mb-4">
                                     {{ __('Login') }}

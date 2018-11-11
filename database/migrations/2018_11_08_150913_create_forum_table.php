@@ -17,9 +17,14 @@ class CreateForumTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('school_info_id')->unsigned();
+            $table->integer('kelas_id')->unsigned();
             $table->string('title');
             $table->text('description');
             $table->timestamps();
+            $table->foreign('kelas_id')
+                ->references('id')
+                ->on('kelas')
+                ->onDelete('cascade');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')

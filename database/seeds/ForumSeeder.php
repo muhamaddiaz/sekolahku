@@ -19,6 +19,20 @@ class ForumSeeder extends Seeder
             DB::table('forum')->insert([
                 'user_id' => 2,
                 'school_info_id' => $user->schoolInfo()->first()->id,
+                'kelas_id' => $user->siswa()->first()->kelas()->first()->id,
+                'title' => $faker->state,
+                'description' => $faker->paragraph($nbSentences = 5, $variableNbSentences = true),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]);
+            $i++;
+        }
+        $i = 0;
+        while($i < 5) {
+            DB::table('forum')->insert([
+                'user_id' => 2,
+                'school_info_id' => $user->schoolInfo()->first()->id,
+                'kelas_id' => 2,
                 'title' => $faker->state,
                 'description' => $faker->paragraph($nbSentences = 5, $variableNbSentences = true),
                 'created_at' => Carbon::now(),
