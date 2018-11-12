@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use \App\Mading;
-
+use App\Mading;
+use App\User;
+use App\Siswa;
+use DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class MadingController extends Controller
@@ -26,7 +29,17 @@ class MadingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $mading = new Mading;
+        $mading->judul_mading = $request->judul;
+        $mading->kategori_mading = $request->kategori;
+        $mading->deskripsi = $request->deskripsi;
+        $gambar = $request->file('gambar');
+        $namaFile = $gambar->getClientOriginalName();
+        $request->file('gambar')->move('mading_picture', $namaFile);
+        $mading->image_mading = $namaFile;
+
+        $save = Auth::user()->siswa()->first()->mading()->save($mading);
+        return redirect()->route('main.emading');
     }
 
     /**
@@ -37,7 +50,17 @@ class MadingController extends Controller
      */
     public function show($id)
     {
-        //
+        $school= Auth::user()->schoolInfo()->first();
+        $mading = Mading::all()->first();
+        $data = Auth::user()->siswa()->first();
+        $user = Mading::all('siswa_id');
+        $siswa = Siswa::find($user)->first();
+        return view('mading.edit',[
+            'mading' => $mading,
+            'siswa' => $siswa,
+            'data' => $data,
+            'school' => $school
+        ]);
     }
 
     /**
@@ -49,7 +72,17 @@ class MadingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $mading = Mading::find($request['id']);
+        $gambar = $request->file('gambar');
+        $namaFile = $gambar->getClientOriginalName();
+        $request->file('gambar')->move('mading_picture', $namaFile);
+        $mading->siswa_id = $request['id_siswa'];
+        $mading->judul_mading = $request['judul'];
+        $mading->image_mading = $namaFile;
+        $mading->deskripsi = $request['deskripsi'];
+        $mading->kategori_mading = $request['kategori'];
+        $mading->save();
+        return redirect()->route('main.emading');
     }
 
     /**
@@ -60,6 +93,17 @@ class MadingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('mading')->where('id',$id)->delete();
+        return redirect()->route('main.emading');
+    }
+    public function create()
+    {
+        $school = Auth::user()->schoolInfo()->first();
+        $siswa = Auth::user()->siswa()->first();
+        return view('mading.store',[
+            'siswa' => $siswa,
+            'school' => $school
+        ]);
     }
 }
+    
