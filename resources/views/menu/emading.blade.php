@@ -9,6 +9,7 @@
                 <h1>E - Mading</h1>
                 <h3>Wadah Tepat berbagi informasi</h3>
             </div>
+      @if($mading)
             @foreach($mading as $m)
             <div class="card primary-color">
                <div class="card-body">
@@ -46,6 +47,16 @@
   			</div>
 		</div>
             @endforeach
+      @else
+      <div class="primary-color-background text-white" style="margin-left: 100px">
+        <div class="container-fluid">
+            <div class="emading-greet-text text-center">
+                <h1>E - Mading</h1>
+                <h3>Wadah Tepat berbagi informasi</h3>
+            </div>
+        </div>
+      </div>
+      @endif
         </div>
     </div>
 @endsection

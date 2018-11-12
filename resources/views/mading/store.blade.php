@@ -18,7 +18,7 @@
                          <h2 style="font-size: 1.5rem; font-weight: 500">{{$school->school_name}}</h2>
     			<form action="/store_mading" method="post" enctype="multipart/form-data">
         		{{ csrf_field() }}
-        		<input type="_hidden" name="id" value="{{$siswa->id}}" />
+        		<input type="hidden" name="id" value="{{$siswa->id}}" />
         		<input class="form-control" type="text" name="judul" placeholder="Judul Berita" />
         		<br>
         		<input class="form-control" type="file" name="gambar" />

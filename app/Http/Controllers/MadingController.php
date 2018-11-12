@@ -51,14 +51,11 @@ class MadingController extends Controller
     public function show($id)
     {
         $school= Auth::user()->schoolInfo()->first();
-        $mading = Mading::all()->first();
-        $data = Auth::user()->siswa()->first();
-        $user = Mading::all('siswa_id');
-        $siswa = Siswa::find($user)->first();
+        $mading = Mading::find($id);
+        $siswa = Auth::user()->siswa()->first();
         return view('mading.edit',[
             'mading' => $mading,
             'siswa' => $siswa,
-            'data' => $data,
             'school' => $school
         ]);
     }
