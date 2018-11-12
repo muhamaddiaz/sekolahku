@@ -41,14 +41,14 @@
             </ul>
             <ul class="navbar-custom__item-horizon navbar-custom__item-horizon--bottom">
                 <li>
-                    <a href="{{route('show_profile')}}">
+                    <a href="{{route('user.show', Auth::user()->id)}}">
                         <img style="width: 30px; height: 30px" src={{asset('images/avatar/man-1.svg')}} alt="no image"/>
                     </a>
                 </li>
             </ul>
         </div>
     </div>
-    <div>
+    <div style="background-color: #E6ECF0; min-height: 100vh;">
         @yield('content-2')
     </div>
 @endsection

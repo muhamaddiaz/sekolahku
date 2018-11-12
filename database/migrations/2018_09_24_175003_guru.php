@@ -17,6 +17,7 @@ class Guru extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('school_info_id')->unsigned();
+            $table->integer('kelas_id')->unsigned()->nullable();
             $table->string('nama');
             $table->string('mata_pelajaran');
             $table->string('wali_kelas')->nullable();

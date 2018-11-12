@@ -36,3 +36,15 @@
     right: 0;
     margin: 20px;
 }
+
+// Profile User
+
+.profile-container {
+    .profile__header {
+        height: 40vh;
+        background-color: navy;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

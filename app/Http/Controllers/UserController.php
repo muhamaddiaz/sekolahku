@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\siswa as Siswa;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -44,10 +46,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $school = Auth::user()->schoolInfo()->first();
-        return view('user.show', ['school' => $school]);
+        $user = Siswa::findOrFail($id);
+        $forums = Siswa::findOrFail($id)->user()->first()->forums()->get();
+        return view('user.show', [
+            'user' => $user,
+            'forums' => $forums
+        ]);
     }
 
     /**

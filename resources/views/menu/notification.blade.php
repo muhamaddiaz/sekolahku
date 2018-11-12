@@ -3,7 +3,7 @@
 @section('title', 'Notifikasi')
 
 @section('content-2')
-    <div class="container mt-5">
+    <div class="container pt-5">
         <div class="notification-text">
             <h1 class="primary-color">Catatan Pemberitahuan</h1>
             <form action="{{route('main.notification.delete')}}" method="POST">

@@ -124,19 +124,22 @@
                 <h2>My ClassMates</h2>
                 <br>
                 @foreach($mates as $m)
-                    <div class="card mt-2 mb-2">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-3 text-center">
-                                    <img style="width: 50px; height: 50px" src={{asset('images/avatar/man-1.svg')}} alt="no image"/>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="card-title">{{$m->nama}}</div>
-                                    <div class="card-text">{{$m->NISN}}</div>
-                                </div>
-                            </div>  
+                    <a href="{{route('user.show', $m->id)}}">
+                        <div class="card mt-2 mb-2">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3 text-center">
+                                        <img style="width: 50px; height: 50px" src={{asset('images/avatar/man-1.svg')}} alt="no image"/>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="card-title">{{$m->nama}}</div>
+                                        <div class="card-text">{{$m->NISN}}</div>
+                                    </div>
+                                </div>  
+                            </div>
                         </div>
-                    </div>
+                    </a>
+                    
                 @endforeach
             </div>
         </div>
