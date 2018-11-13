@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Registrasi akun')
+
 @section('content')
 <div class="container">
     <div class="register-flex">

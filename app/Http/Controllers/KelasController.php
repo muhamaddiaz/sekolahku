@@ -10,10 +10,13 @@ use Illuminate\Http\Request;
 class KelasController extends Controller
 {
     public function classMates() {
+        $kelas = ''; $mates = ''; $kelasForum = '';
         $user = Auth::user();
-        $kelas = $user->siswa()->first()->kelas()->first();
-        $mates = $kelas->siswa()->get();
-        $kelasForum = $kelas->forum()->orderBy('updated_at', 'desc')->get();
+        if(!(Auth::user()->siswa())) {
+            $kelas = $user->siswa()->first()->kelas()->first();
+            $mates = $kelas->siswa()->get();
+            $kelasForum = $kelas->forum()->orderBy('updated_at', 'desc')->get();
+        }
         $forums = $user->schoolInfo()->first()->forums()->orderBy('updated_at', 'desc')->get();
         return view('kelas.classmates', [
             'kelas' => $kelas,

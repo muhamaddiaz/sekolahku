@@ -10,7 +10,7 @@
                 <br><br>
                 <h2>{{$user->nama}}</h2>
                 @if($user)
-                    <hp>{{$user->NISN}}</hp>
+                    <p>{{$user->NISN}}</p>
                 @endif
             </div>
         </div>

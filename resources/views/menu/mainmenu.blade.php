@@ -109,7 +109,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="primary-color-background p-4" style="border-radius: 10px">
-                                            <h2 class="mb-3">E - Mading</h2>
+                                            <h2 class="mb-2">E - Mading</h2>
+                                            <p class="mb-4">Sekilas informasi mading terbaru</p>
                                             <div class="card-columns">
                                                 @foreach($madingHigh as $m)
                                                 <div class="card primary-color">
@@ -135,8 +136,8 @@
                         </div>
                     </div>
                     <div class="tab-pane container fade" id="kelola">
-                        <div class="row">
-                            @if(Auth::user()->role == 1)
+                        @if(Auth::user()->role == 1)
+                            <div class="row">
                                 <div class="col-md-3 mt-3">
                                     <a href="{{route('staff.pengajar')}}">
                                         <div class="card primary-color-background text-white">
@@ -177,8 +178,10 @@
                                         </div>
                                     </a>
                                 </div>
-                            @endif
-                        </div>
+                            </div>
+                            <br>
+                            <a href="#gurusiswa" data-toggle="modal" class="btn btn-primary">Input data Guru / Siswa</a>
+                        @endif
                     </div>
                     <div class="tab-pane container fade" id="import">
                         @if(Auth::user()->role == 1)
@@ -210,7 +213,7 @@
                                                 <div class="tab-pane container active" id="home">
                                                     <form method="POST" action="{{route('excel.importPengajar')}}" enctype="multipart/form-data">
                                                         @csrf
-                                                        <input type="file" name="excel_data_pengajar" class="form-control" />
+                                                        <input type="file" name="excel_data_pengajar" class="form-control" required/>
                                                         <br>
                                                         <button type="submit" class="btn btn-success">Insert Data</button>
                                                     </form>
@@ -218,7 +221,7 @@
                                                 <div class="tab-pane container fade" id="menu1">
                                                     <form method="POST" action="{{route('excel.importPelajar')}}" enctype="multipart/form-data">
                                                         @csrf
-                                                        <input type="file" name="excel_data_pelajar" class="form-control" />
+                                                        <input type="file" name="excel_data_pelajar" class="form-control" required/>
                                                         <br>
                                                         <button type="submit" class="btn btn-success">Insert Data</button>
                                                     </form>
@@ -231,8 +234,62 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="modal show" style="" id="gurusiswa">
+        <div class="modal-dialog">
+            <div class="modal-content">                        
+                <div class="modal-header">
+                    <h4 class="modal-title primary-color">Menamdahkan data</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>                        
+                <div class="modal-body">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#ipengajar">Pengajar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#ipelajar">Pelajar</a>
+                        </li>
+                    </ul>
+                    <br>      
+                    <div class="tab-content">
+                        <div class="tab-pane container active" id="ipengajar">
+                            <form method="POST" action="{{route('excel.importPengajar')}}" enctype="multipart/form-data">
+                                @csrf
+                                <input type="text" name="name" placeholder="Nama lengkap" class="form-control" required>
+                                <br>
+                                <input type="text" name="username" placeholder="Nama pengguna" class="form-control" required>
+                                <br>
+                                <input type="email" name="email" placeholder="Email" class="form-control" required>
+                                <br>
+                                <button type="submit" class="btn btn-success">Rekam data</button>
+                            </form>
+                        </div>
+                        <div class="tab-pane container fade" id="ipelajar">
+                            <form method="POST" action="{{route('excel.importPelajar')}}" enctype="multipart/form-data">
+                                @csrf
+                                <input type="text" name="name" placeholder="Nama lengkap" class="form-control" required>
+                                <br>
+                                <input type="text" name="username" placeholder="Nama pengguna" class="form-control" required>
+                                <br>
+                                <input type="email" name="email" placeholder="Email" class="form-control" required>
+                                <br>
+                                <input type="text" name="nisn" placeholder="NISN" class="form-control" required>
+                                <br>
+                                <button type="submit" class="btn btn-success">Rekam data</button>
+                            </form>
+                        </div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

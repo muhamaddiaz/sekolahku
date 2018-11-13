@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <br>
-                @if(Auth::user() == $forum->user()->first())
+                @if(Auth::user() == $forum->user()->first() || Auth::user()->role == 1)
                     <div class="list-group">
                         <a href="#perbarui" class="list-group-item list-group-action" data-toggle="modal">Perbarui post</a>
                         <a href="#hapus" class="list-group-item list-group-action text-danger" data-toggle="modal">Hapus post</a>

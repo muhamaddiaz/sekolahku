@@ -23,6 +23,7 @@
         @endif
         <div class="row pt-4">
             <div class="col-md-8">
+                @if(Auth::user()->siswa()->first())
                 <ul class="nav nav-pills">
                     <li class="nav-item">
                         <a href="#sekolah" data-toggle="pill" class="nav-link active">Sekolah</a>
@@ -34,6 +35,7 @@
                         <a href="#saya" data-toggle="pill" class="nav-link">Postinganku</a>
                     </li>
                 </ul>
+                @endif
                 <br>
                 <div class="tab-content">
                     <div class="tab-pane container active" id="sekolah">
@@ -61,6 +63,7 @@
                             </div>
                         @endforeach
                     </div>
+                    @if(Auth::user()->siswa()->first())
                     <div class="tab-pane container fade" id="kelas">
                         @foreach($kelasForum as $f) 
                             <div class="card mt-2 mb-2">
@@ -111,9 +114,11 @@
                             </div>
                         @endforeach
                     </div>
+                    @endif
                 </div>
             </div>
             <div class="col-md-4">
+                @if(Auth::user()->siswa()->first())
                 <div class="card mt-2">
                     <div class="card-body">
                         <h1 class="card-title">4503</h1>
@@ -121,6 +126,7 @@
                     </div>
                 </div>
                 <br>
+                
                 <h2>My ClassMates</h2>
                 <br>
                 @foreach($mates as $m)
@@ -139,8 +145,8 @@
                             </div>
                         </div>
                     </a>
-                    
-                @endforeach
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>

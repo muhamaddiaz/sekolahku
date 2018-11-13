@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "Masuk Akun")
+
 @section('content')
 <div class="container">
     <div class="login-flex">
@@ -66,7 +68,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="card-title secondary-color">
-                                    Did you know ?
+                                    Apakah kamu tahu ?
                                 </h3>
                                 <p class="card-text" style="font-size: 1rem">
                                     Untuk menggunakan aplikasi web ini
