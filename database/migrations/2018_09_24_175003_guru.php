@@ -20,6 +20,7 @@ class Guru extends Migration
             $table->integer('kelas_id')->unsigned()->nullable();
             $table->string('nama');
             $table->string('mata_pelajaran');
+            $table->string('wali_kelas')->nullable();
             $table->foreign('user_id')
                     ->references('id')
                     ->on('users')
