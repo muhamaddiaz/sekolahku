@@ -25,14 +25,47 @@ class MainController extends Controller
     }
 
     public function emading() {
-        $mading = Mading::all();
-        $data = Auth::user()->siswa()->first();
-        $user = Mading::all('siswa_id');
-        $siswa = Siswa::find($user)->first();
-        return view('menu.emading',[
-            'mading' => $mading,
-            'siswa' => $siswa,
-            'data' => $data
-        ]);
+        if(Auth::user()->role == 1)
+        {    
+            $school= Auth::user()->schoolInfo()->first();
+            $mading = Mading::all();
+            $data = Auth::user()->first();
+            $user = Mading::all('siswa_id');
+            $siswa = Siswa::find($user)->first();
+            return view('menu.emading',[
+                'mading' => $mading,
+                'siswa' => $siswa,
+                'data' => $data,
+                'school' => $school
+            ]);
+        }
+        elseif(Auth::user()->role == 2)
+        {
+            $school= Auth::user()->schoolInfo()->first();
+            $mading = Mading::all();
+            $data = Auth::user()->guru()->first();
+            $user = Mading::all('siswa_id');
+            $siswa = Siswa::find($user)->first();
+            return view('menu.emading',[
+                'mading' => $mading,
+                'siswa' => $siswa,
+                'data' => $data,
+                'school' => $school
+            ]);
+        }
+        else
+        {
+            $school= Auth::user()->schoolInfo()->first();
+            $mading = Mading::all();
+            $data = Auth::user()->siswa()->first();
+            $user = Mading::all('siswa_id');
+            $siswa = Siswa::find($user)->first();
+            return view('menu.emading',[
+                'mading' => $mading,
+                'siswa' => $siswa,
+                'data' => $data,
+                'school' => $school
+            ]);
+        }
     }
 }
