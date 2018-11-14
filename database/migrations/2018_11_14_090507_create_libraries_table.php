@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ELibrary extends Migration
+class CreateLibrariesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,24 @@ class ELibrary extends Migration
      */
     public function up()
     {
-         Schema::create('library', function (Blueprint $table) {
+        Schema::create('libraries', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('siswa_id')->unsigned();
+            $table->integer('siswa_id')->unsigned()->nullable();
+            $table->integer('school_info_id')->unsigned();
             $table->string('judul');
             $table->string('deskripsi');
             $table->string('kategori');
             $table->string('video')->nullable();
             $table->foreign('siswa_id')
                     ->references('id')
-                    ->on('siswa')
-                    ->onUpdate('cascade')
+                    ->on('siswa');
+            $table->foreign('school_info_id')
+                    ->references('id')
+                    ->on('school_infos')
                     ->onDelete('cascade');
             $table->timestamps();
-        });    }
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -35,6 +39,6 @@ class ELibrary extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('library');
+        Schema::dropIfExists('libraries');
     }
 }

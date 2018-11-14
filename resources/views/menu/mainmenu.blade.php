@@ -191,6 +191,8 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                             Import Data
                         </button>
+                        <a href="{{route('excel.download.siswa')}}" class="btn btn-success">Unduh format excel siswa</a>
+                        <a href="{{route('excel.download.guru')}}" class="btn btn-success">Unduh format excel guru</a>
                         <div class="modal show" style="" id="myModal">
                             <div class="modal-dialog">
                                 <div class="modal-content">

@@ -43,10 +43,12 @@ class KelasController extends Controller
                     ->kelas()->get();
         $guru = Auth::user()->schoolInfo()->first()
                     ->guru()->get();
+        $school = Auth::user()->schoolInfo()->first();
 
         return view('kelas.index', [
             'kelas' => $kelas,
-            'guru' => $guru
+            'guru' => $guru,
+            'school' => $school
         ]);
     }
 
@@ -93,12 +95,13 @@ class KelasController extends Controller
     public function show($id)
     {
         // Untuk melihat setiap informasi yang ada didalam kelas
-        $id = decrypt($id);
         $kelas = Kelas::find($id);
+        $wali = $kelas->guru()->first();
         $siswa = $kelas->siswa()->get();
         return view('kelas.show', [
             'kelas' => $kelas, 
-            'siswa' => $siswa
+            'siswa' => $siswa,
+            'wali' => $wali
         ]);
     }
 

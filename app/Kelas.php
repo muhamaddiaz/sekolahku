@@ -24,7 +24,7 @@ class Kelas extends Model
         return $this->hasMany(Forum::class);
     }
 
-    public function school() {
+    public function schoolInfo() {
         return $this->belongsTo(School_info::class);
     }
 

@@ -7,7 +7,7 @@
     style="background-image: url({{asset('images/school.jpg')}}">
         <div class="class-mates_faded">
             <div class="container">
-                <div class="class-mates_head-text primary-color p-5">
+                <div class="class-mates_head-text primary-color pt-5 pb-5">
                     <h1 class="pt-5">ClassMates</h1>
                     <h3>Cara baru berbagi setiap moment</h3>
                 </div>
@@ -56,6 +56,7 @@
                                     </div>
                                     <div>
                                         <p class="card-text">{{$f->description}}</p>
+                                        <a href="{{ route('forum.show', $f->id) }}#disqus_thread"></a>
                                     </div>
                                     <br>
                                     <a href="{{ route('forum.show', $f->id) }}" class="btn btn-outline-primary">Lihat diskusi</a>
@@ -174,3 +175,5 @@
         </div>
     </div>
 @endsection
+
+<script id="dsq-count-scr" src="//sekolahku-1.disqus.com/count.js" async></script>

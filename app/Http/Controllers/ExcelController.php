@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Imports\UsersImport;
 use App\Imports\SiswaImport;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExcelController extends Controller
@@ -60,5 +61,21 @@ class ExcelController extends Controller
             Auth::user()->notifications()->save($notif);
             return back()->with('danger', 'format file tidak sesuai, operasi dibatalkan!');
         }
+    }
+
+    public function downloadGuru() {
+        $file= public_path(). "/download/guru_sekolahku.xlsx";
+        $headers = array(
+                'Content-Type: application/xlsx',
+                );
+        return Response::download($file, 'guru_sekolahku', $headers);
+    }
+
+    public function downloadSiswa() {
+        $file= public_path(). "/download/siswa_sekolahku.xlsx";
+        $headers = array(
+                'Content-Type: application/xlsx',
+                );
+        return Response::download($file, 'siswa_sekolahku.xlsx', $headers);
     }
 }

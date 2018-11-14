@@ -3,6 +3,12 @@
 @section('title', 'Kelas')
 
 @section('content-2')
+    <div class="kelas_greet primary-color-background pt-5 pb-5">
+        <div class="container">
+            <h2 class="text-white">Manajemen kelas</h2>
+            <h3 class="text-white">{{$school->school_name}}</h3>
+        </div>
+    </div>
     <div class="container mt-5">
         @if($errors->any())
             @component('components.alert', ['title' => 'danger'])
@@ -18,9 +24,6 @@
                 {{session('success')}}
             @endcomponent
         @endif
-        <div class="kelas_greet">
-            <h2 class="primary-color">Kelas</h2>
-        </div>
         <div class="row">
             @foreach($kelas as $k)
                 <div class="col-md-4 mt-3">
@@ -30,6 +33,12 @@
                                 <h3 class="card-title">
                                     {{$k->tingkat_kelas}} {{$k->jurusan_kelas}} {{$k->bagian_kelas}}
                                 </h3>
+                                @if($k->guru()->first())
+                                    <p class="card-text text-secondary">Wali kelas: {{$k->guru()->first()->nama}}</p>
+                                @else 
+                                    <p class="card-text text-secondary">Belum terdefinisi</p>
+                                @endif
+                                <p class="card-text text-secondary">{{$k->siswa()->count()}} Siswa</p>
                                 <br>
                                 @if(Auth::user()->role == 1)
                                     <a href="{{route('kelas.edit', ['kela' => $k->id])}}" class="btn btn-info">Kelola Kelas</a>
@@ -95,4 +104,5 @@
             </div>
         </div>
     </div>
+    <br><br>
 @endsection
