@@ -41,7 +41,7 @@
             </ul>
             <ul class="navbar-custom__item-horizon navbar-custom__item-horizon--bottom">
                 <li>
-                    <a href="{{route('user.show', Auth::user()->id)}}">
+                    <a href="{{route('user.profile')}}">
                         <img style="width: 30px; height: 30px" src={{asset('images/avatar/man-1.svg')}} alt="no image"/>
                     </a>
                 </li>

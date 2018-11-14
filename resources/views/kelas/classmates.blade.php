@@ -23,7 +23,7 @@
         @endif
         <div class="row pt-4">
             <div class="col-md-8">
-                @if(Auth::user()->siswa()->first())
+                @if(Auth::user()->siswa()->first() || Auth::user()->guru()->first())
                 <ul class="nav nav-pills">
                     <li class="nav-item">
                         <a href="#sekolah" data-toggle="pill" class="nav-link active">Sekolah</a>
@@ -63,7 +63,7 @@
                             </div>
                         @endforeach
                     </div>
-                    @if(Auth::user()->siswa()->first())
+                    @if(Auth::user()->siswa()->first() || Auth::user()->guru()->first())
                     <div class="tab-pane container fade" id="kelas">
                         @foreach($kelasForum as $f) 
                             <div class="card mt-2 mb-2">
@@ -118,7 +118,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                @if(Auth::user()->siswa()->first())
+                @if(Auth::user()->siswa()->first() || Auth::user()->guru()->first())
                 <div class="card mt-2">
                     <div class="card-body">
                         <h1 class="card-title">4503</h1>

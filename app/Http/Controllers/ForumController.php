@@ -41,7 +41,11 @@ class ForumController extends Controller
 
         $forum = new Forum;
         $forum->school_info_id = Auth::user()->schoolInfo()->first()->id;
-        $forum->kelas_id = Auth::user()->siswa()->first()->kelas()->first()->id;
+        if(Auth::user()->siswa()->first()) {
+            $forum->kelas_id = Auth::user()->siswa()->first()->kelas()->first()->id;
+        } else if(Auth::user()->guru()->first()) {
+            $forum->kelas_id = Auth::user()->guru()->first()->kelas()->first()->id;
+        }
         $forum->title = $request->title;
         $forum->description = $request->description;
 
@@ -59,7 +63,13 @@ class ForumController extends Controller
     public function show(Forum $forum)
     {
         // Melihat Forum
-        $user = $forum->user()->first()->siswa()->first()->nama;
+        if($forum->user()->first()->siswa()->first()) {
+            $user = $forum->user()->first()->siswa()->first()->nama;
+        } else if($forum->user()->first()->guru()->first()){
+            $user = $forum->user()->first()->guru()->first()->nama;
+        } else {
+            $user = $forum->user()->first()->name;
+        }
         return view('forum.show', [
             'forum' => $forum,
             'user' => $user

@@ -12,6 +12,16 @@ use App\Kelas;
 use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
+    public function profile(Request $req) {
+        $path = $req->path();
+        $user = Auth::user();
+        $forums = Auth::user()->forums()->get();
+        return view('user.show', [
+            'path' => $path,
+            'user' => $user,
+            'forums' => $forums
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -49,11 +59,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $req)
     {
-        $user = Siswa::findOrFail($id);
-        $forums = Siswa::findOrFail($id)->user()->first()->forums()->get();
+        $path = 'hello';
+        if($req->query('role') == 'pengajar') {
+            $user = Guru::findOrFail($id);
+            $forums = Guru::findOrFail($id)->user()->first()->forums()->get();
+        } else {
+            $user = Siswa::findOrFail($id);
+            $forums = Siswa::findOrFail($id)->user()->first()->forums()->get();
+        }
         return view('user.show', [
+            'path' => $path,
             'user' => $user,
             'forums' => $forums
         ]);

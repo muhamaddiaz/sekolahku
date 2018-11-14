@@ -36,6 +36,7 @@
                 </div>
             </div>
             <div class="col-md-4">
+                @if($forum->user()->first()->siswa()->first())
                 <div class="card">
                     <div class="card-body text-center">
                         <img src="{{asset('images/avatar/boy.svg')}}" 
@@ -47,6 +48,31 @@
                     </div>
                 </div>
                 <br>
+                @elseif($forum->user()->first()->guru()->first())
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="{{asset('images/avatar/boy.svg')}}" 
+                            style="width: 80px; height: 80px"
+                            class="img-rounded"
+                            alt="pengajar.svg" />
+                        <p class="card-text mb-0 mt-3">{{$forum->user()->first()->guru()->first()->nama}}</p>
+                        <p class="card-text mb-0 mt-3">{{$forum->user()->first()->guru()->first()->kelas()->first()->full_kelas}}</p>
+                    </div>
+                </div>
+                <br>
+                @else 
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="{{asset('images/avatar/boy.svg')}}" 
+                            style="width: 80px; height: 80px"
+                            class="img-rounded"
+                            alt="pengajar.svg" />
+                        <p class="card-text mb-0 mt-3">{{$forum->user()->first()->name}}</p>
+                        <p class="card-text mb-0 mt-3">Administrator</p>
+                    </div>
+                </div>
+                <br>
+                @endif
                 @if(Auth::user() == $forum->user()->first() || Auth::user()->role == 1)
                     <div class="list-group">
                         <a href="#perbarui" class="list-group-item list-group-action" data-toggle="modal">Perbarui post</a>

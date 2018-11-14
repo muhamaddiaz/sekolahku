@@ -17,7 +17,7 @@ class CreateForumTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('school_info_id')->unsigned();
-            $table->integer('kelas_id')->unsigned();
+            $table->integer('kelas_id')->unsigned()->nullable();
             $table->string('title');
             $table->text('description');
             $table->timestamps();
