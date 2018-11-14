@@ -98,10 +98,12 @@ class KelasController extends Controller
         $kelas = Kelas::find($id);
         $wali = $kelas->guru()->first();
         $siswa = $kelas->siswa()->get();
+        $forum = $kelas->forum()->get();
         return view('kelas.show', [
             'kelas' => $kelas, 
             'siswa' => $siswa,
-            'wali' => $wali
+            'wali' => $wali,
+            'forum' => $forum
         ]);
     }
 

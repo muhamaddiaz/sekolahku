@@ -7,9 +7,9 @@
     style="background-image: url({{asset('images/school.jpg')}}">
         <div class="class-mates_faded">
             <div class="container">
-                <div class="class-mates_head-text primary-color pt-5 pb-5">
+                <div class="class-mates_head-text primary-color text-center pt-5 pb-5">
                     <h1 class="pt-5">ClassMates</h1>
-                    <h3>Cara baru berbagi setiap moment</h3>
+                    <h3>Forum diskusi sekolah terintegrasi</h3>
                 </div>
             </div>
         </div>

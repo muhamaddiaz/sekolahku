@@ -39,7 +39,9 @@
                 </ul>
                 <div class="tab-content mt-3">
                     <div class="tab-pane container active" id="info">
-
+                        <div class="jumbotron bg-primary text-white">
+                            <h2>Info Kelas, Input absensi, Input nilai dll</h2>
+                        </div>
                     </div>
                     <div class="tab-pane container fade" id="classmates">
                         <div class="card-columns mt-5">
@@ -61,10 +63,32 @@
                         </div>
                     </div>
                     <div class="tab-pane container fade" id="forum">
-
+                        @foreach($forum as $f) 
+                            <div class="card mt-2 mb-2">
+                                <div class="card-body">
+                                    <div>
+                                        <h2 class="card-title">
+                                            {{$f->title}} 
+                                            @if($f->user()->first()->role == 0)
+                                                <span class="badge badge-secondary" style="font-size: 1rem;">Siswa</span>
+                                            @elseif($f->user()->first()->role == 1)
+                                                <span class="badge badge-secondary" style="font-size: 1rem;">Admin</span>
+                                            @elseif($f->user()->first()->role == 2)
+                                                <span class="badge badge-secondary" style="font-size: 1rem;">Guru</span>
+                                            @endif
+                                        </h2>
+                                    </div>
+                                    <div>
+                                        <p class="card-text">{{$f->description}}</p>
+                                    </div>
+                                    <br>
+                                    <a href="{{ route('forum.show', $f->id) }}" class="btn btn-outline-primary">Lihat diskusi</a>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
+@endsection 
