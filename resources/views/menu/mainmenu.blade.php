@@ -162,7 +162,7 @@
                                 <div class="card primary-color-background text-white">
                                     <div class="card-body">
                                         <h3 class="card-title">Ruang kelas</h3>
-                                        <p class="card-text">10 Kelas</p>
+                                        <p class="card-text">{{$kelasCount}} Kelas</p>
                                     </div>
                                 </div>
                             </a>
