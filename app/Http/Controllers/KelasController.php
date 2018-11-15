@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Kelas;
+use App\Guru;
 use App\Http\Requests\KelasRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -74,15 +75,21 @@ class KelasController extends Controller
         // Membuat kelas baru
         //$request->validated();
 
-        $kelas = new Kelas;
-        $kelas->tingkat_kelas = $request->tingkat;
-        $kelas->jurusan_kelas = $request->jurusan;
-        $kelas->bagian_kelas = $request->bagian;
-        $kelas->guru_id = $request->wali;
+        $kelas = Kelas::create([
+            'tingkat_kelas' => $request->tingkat,
+            'jurusan_kelas' => $request->jurusan,
+            'bagian_kelas' => $request->bagian,
+            'guru_id' => $request->wali,
+            'school_info_id' => Auth::user()->schoolInfo()->first()->id
+        ]);
 
-        $saved = Auth::user()->schoolInfo()
-                    ->first()->kelas()->save($kelas);
-
+        $guru = Guru::find($request->wali);
+        if(!$guru->kelas_id) {
+            $guru->kelas_id = $kelas->id;
+            $guru->save();
+        } else {
+            return back()->with('danger', 'Wali kelas tidak kosong!');
+        }
         return back()->with('success', 'Kelas berhasil ditambahkan');
     }
 
@@ -115,7 +122,14 @@ class KelasController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Edit Informasi Kelas
+        $kelas = Kelas::find($id);
+        $guru = Auth::user()->schoolInfo()->first()
+                    ->guru()->get();
+        return view('kelas.edit',[
+            'kelas' => $kelas,
+            'guru' => $guru
+        ]);
     }
 
     /**
@@ -139,9 +153,19 @@ class KelasController extends Controller
     public function destroy($id)
     {
         // Menghapus kelas yang dipilih oleh admin
-
+        $user = Auth::user()->schoolInfo()->first()->kelas()->where('id', $id)->first()->guru()->first();
+        $siswa = Auth::user()->schoolInfo()->first()->kelas()->where('id', $id)->first()->siswa()->get();
+        if($siswa) {
+            foreach($siswa as $s) {
+                $s->kelas_id = null;
+                $s->save();
+            }
+        }
+        if($user) {
+            $user->kelas_id = null;
+            $user->save();
+        }
         Auth::user()->schoolInfo()->first()->kelas()->where('id', $id)->delete();
-        
         return back()->with('success', 'Kelas telah berhasil dihapus');
     }
 }

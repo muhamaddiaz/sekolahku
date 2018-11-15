@@ -16,7 +16,7 @@ class Siswa extends Migration
         Schema::create('siswa', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('school_info_id')->unsigned();
-            $table->integer('kelas_id')->unsigned();
+            $table->integer('kelas_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned();
             $table->string('nama');
             $table->string('NISN')->unique();

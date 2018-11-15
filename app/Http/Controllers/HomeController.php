@@ -27,6 +27,7 @@ class HomeController extends Controller
         $notifCount = Auth::user()->notifications()->count();
         $school = Auth::user()->schoolInfo()->first();
         $kelasCount = $school->kelas()->count();
+        $kelas = $school->kelas()->get();
         if(Auth::user()->role == 0) {
             $classMates = Auth::user()->siswa()->first()
                     ->kelas()->first()
@@ -36,9 +37,15 @@ class HomeController extends Controller
                 'school' => $school, 
                 'notifCount' => $notifCount,
                 'kelasCount' => $kelasCount,
-                'classMates' => $classMates
+                'classMates' => $classMates,
+                'kelas' => $kelas
             ]);
         }
-        return view('menu.mainmenu', ['school' => $school, 'notifCount' => $notifCount, 'kelasCount' => $kelasCount]);
+        return view('menu.mainmenu', [
+            'school' => $school, 
+            'notifCount' => $notifCount, 
+            'kelasCount' => $kelasCount,
+            'kelas' => $kelas
+        ]);
     }
 }

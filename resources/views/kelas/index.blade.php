@@ -24,6 +24,11 @@
                 {{session('success')}}
             @endcomponent
         @endif
+        @if(session('danger'))
+            @component('components.alert', ['title' => 'danger'])
+                {{session('danger')}}
+            @endcomponent
+        @endif
         <div class="row">
             @foreach($kelas as $k)
                 <div class="col-md-4 mt-3">
@@ -41,7 +46,7 @@
                                 <p class="card-text text-secondary">{{$k->siswa()->count()}} Siswa</p>
                                 <br>
                                 @if(Auth::user()->role == 1)
-                                    <a href="{{route('kelas.edit', ['kela' => $k->id])}}" class="btn btn-info">Kelola Kelas</a>
+                                    <a href="{{route('kelas.edit', ['kela' => $k->id])}}" class="btn btn-info text-white">Kelola Kelas</a>
                                     <form style="display:inline-block" action="{{route('kelas.destroy', ['kela' => $k->id])}}" method="POST">
                                         @csrf
                                         @method('DELETE')

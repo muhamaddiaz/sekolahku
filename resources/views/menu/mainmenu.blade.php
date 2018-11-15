@@ -3,7 +3,7 @@
 @section('title', 'Main Menu')
 
 @section('content-2')
-<div class="main-class text-white ml-5 pb-3" style="background-image: url({{asset('images/space.jpg')}}); background-size: 100% 100%; background-attachment: fixed">
+<div class="main-class text-white ml-5 pb-3" style="background-color: grey; background-size: 100% 100%; background-attachment: fixed">
     <div class="container pt-5">
         @if(session('success'))
         @component('components.alert', ['title' => 'success'])
@@ -16,7 +16,7 @@
         @endcomponent
         @endif
         <div class="greet-user text-white mt-3">
-            <h1>SMAN 1 Parakansalak System</h1>
+            <h1>{{$school->school_name}}</h1>
             <h2>Selamat datang kembali</h2>
         </div>
         <div class="row">
@@ -249,7 +249,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title primary-color">Menamdahkan data</h4>
+                <h4 class="modal-title primary-color">Menambahkan data</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -264,7 +264,7 @@
                 <br>
                 <div class="tab-content">
                     <div class="tab-pane container active" id="ipengajar">
-                        <form method="POST" action="{{route('excel.importPengajar')}}" enctype="multipart/form-data">
+                        <form method="POST" action="{{route('user.store', ['role' => 'pengajar'])}}">
                             @csrf
                             <input type="text" name="name" placeholder="Nama lengkap" class="form-control" required>
                             <br>
@@ -277,7 +277,7 @@
                         </form>
                     </div>
                     <div class="tab-pane container fade" id="ipelajar">
-                        <form method="POST" action="{{route('excel.importPelajar')}}" enctype="multipart/form-data">
+                        <form method="POST" action="{{route('user.store', ['role' => 'pelajar'])}}">
                             @csrf
                             <input type="text" name="name" placeholder="Nama lengkap" class="form-control" required>
                             <br>
@@ -287,6 +287,12 @@
                             <input type="email" name="email" placeholder="Email" class="form-control" required>
                             <br>
                             <input type="text" name="nisn" placeholder="NISN" class="form-control" required>
+                            <br>
+                            <select name="kelas" class="form-control" placeholder="Pilih kelas">
+                                @foreach($kelas as $k)
+                                    <option value="{{$k->id}}">{{$k->full_kelas}}</option>
+                                @endforeach
+                            </select>
                             <br>
                             <button type="submit" class="btn btn-success">Rekam data</button>
                         </form>

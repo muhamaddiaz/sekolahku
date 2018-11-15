@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kelas extends Model
 {
     protected $fillable = [
-        'guru_id'
+        'guru_id', 'tingkat_kelas', 'jurusan_kelas', 'bagian_kelas', 'school_info_id'
     ];
     
     protected $table = 'kelas';

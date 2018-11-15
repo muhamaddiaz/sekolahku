@@ -50,7 +50,55 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Untuk menyimpan pengguna
+
+        if($request->query('role') == 'pelajar') {
+            $user = new User;
+            $user->school_info_id = Auth::user()->school_info_id;
+            $user->name = $request->name;
+            $user->username = $request->username;
+            $user->role = 0;
+            $user->email = $request->email;
+            $user->password = 'secret';
+
+            $user->save();
+
+            $user = User::where('email', strtolower($request->email))->first();
+
+            $siswa = new Siswa;
+            $siswa->school_info_id = $user->school_info_id;
+            $siswa->kelas_id = $request->kelas;
+            $siswa->nama = $request->name;
+            $siswa->NISN = $request->nisn;
+            $siswa->email = $request->email;
+            $siswa->osis = 0;
+
+            $user->siswa()->save($siswa);
+
+            return back()->with('success', 'Data pelajar berhasil direkam');
+        } else if($request->query('role') == 'pengajar') {
+            $user = new User;
+            $user->school_info_id = Auth::user()->school_info_id;
+            $user->name = $request->name;
+            $user->username = $request->username;
+            $user->role = 2;
+            $user->email = strtolower($request->email);
+            $user->password = 'secret';
+
+            $user->save();
+
+            $user = User::where('email', strtolower($request->email))->first();
+
+            $guru = new Guru;
+            $guru->school_info_id = Auth::user()->school_info_id;
+            $guru->nama = $request->name;
+            $guru->mata_pelajaran = 'Ekonomi';
+
+            $user->guru()->save($guru);
+
+            return back()->with('success', 'Data pengajar berhasil direkam');
+        }
+
     }
 
     /**
