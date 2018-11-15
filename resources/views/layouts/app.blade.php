@@ -135,6 +135,8 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <!-- DataTables -->
     <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <!-- Chart -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- App scripts -->
     @stack('scripts')
 </body>

@@ -17507,6 +17507,10 @@ p {
           align-items: center;
 }
 
+.analytic-greet-text{
+  padding: 80px 0;
+}
+
 .secondary-color {
   color: #3B35D5;
 }
