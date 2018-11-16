@@ -43,8 +43,10 @@ class ForumController extends Controller
         $forum->school_info_id = Auth::user()->schoolInfo()->first()->id;
         if(Auth::user()->siswa()->first()) {
             $forum->kelas_id = Auth::user()->siswa()->first()->kelas()->first()->id;
-        } else if(Auth::user()->guru()->first()) {
-            $forum->kelas_id = Auth::user()->guru()->first()->kelas()->first()->id;
+        } else if($guru = Auth::user()->guru()->first()) {
+            if($guru->kelas()->first()) {
+               $forum->kelas_id = $guru->kelas()->first()->id; 
+            }
         }
         $forum->title = $request->title;
         $forum->description = $request->description;

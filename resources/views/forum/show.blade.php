@@ -56,7 +56,11 @@
                             class="img-rounded"
                             alt="pengajar.svg" />
                         <p class="card-text mb-0 mt-3">{{$forum->user()->first()->guru()->first()->nama}}</p>
-                        <p class="card-text mb-0 mt-3">{{$forum->user()->first()->guru()->first()->kelas()->first()->full_kelas}}</p>
+                        @if($forum->user()->first()->guru()->first()->kelas()->first())
+                            <p class="card-text mb-0 mt-3">{{$forum->user()->first()->guru()->first()->kelas()->first()->full_kelas}}</p>
+                        @else
+                            <p class="card-text mb-0 mt-3">Tenaga pengajar</p>
+                        @endif
                     </div>
                 </div>
                 <br>

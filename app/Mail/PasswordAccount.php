@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -16,9 +17,16 @@ class PasswordAccount extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+    public $user;
+    public $password;
+
+    public function __construct(User $user, $password)
     {
         //
+
+        $this->user = $user;
+        $this->password = $password;
     }
 
     /**
@@ -28,6 +36,6 @@ class PasswordAccount extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.password');
     }
 }

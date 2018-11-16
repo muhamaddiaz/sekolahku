@@ -19,8 +19,10 @@ class KelasController extends Controller
             $kelasForum = $kelas->forum()->orderBy('updated_at', 'desc')->get();
         } else if(Auth::user()->guru()->first()) {
             $kelas = $user->guru()->first()->kelas()->first();
-            $mates = $kelas->siswa()->get();
-            $kelasForum = $kelas->forum()->orderBy('updated_at', 'desc')->get();
+            if($kelas) {
+                $mates = $kelas->siswa()->get();
+                $kelasForum = $kelas->forum()->orderBy('updated_at', 'desc')->get();
+            }
         }
         $forums = $user->schoolInfo()->first()->forums()->orderBy('updated_at', 'desc')->get();
         return view('kelas.classmates', [
@@ -141,7 +143,29 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Untuk melakukan edit kelas pada database
+
+        $kelas = Kelas::findOrFail($id);
+        $kelas->tingkat_kelas = $request->tingkat;
+        $kelas->jurusan_kelas = $request->jurusan;
+        $kelas->bagian_kelas = $request->bagian;
+
+        $guru = Guru::findOrFail($request->wali);
+
+        if($guru->kelas_id == null) {
+            $wali = $kelas->guru()->first();
+            if($wali) {
+                $wali->kelas_id = null;
+                $wali->save();
+            }
+            $guru->kelas_id = $kelas->id;
+            $kelas->guru_id = $guru->id;
+            $guru->save();
+            $kelas->save();
+
+            return redirect()->route('kelas.index')->with('success', 'Informasi kelas berhasil diupdate!');
+        }
+        return back()->with('danger', 'Wali kelas tidak dapat dipilih');
     }
 
     /**

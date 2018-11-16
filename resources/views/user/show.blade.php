@@ -51,12 +51,14 @@
                                     <h3>{{$user->siswa()->first()->kelas()->first()->full_kelas}}</h3>
                                     <p class="text-secondary">{{$user->siswa()->first()->kelas()->first()->guru()->first()->nama}}</p>
                                 @else
-                                    <a href="{{route('kelas.show', $user->guru()->first()->kelas()->first()->id)}}">
-                                        <h3>{{$user->guru()->first()->kelas()->first()->full_kelas}}</h3>
-                                        @if($user->guru()->first()->kelas()->first()->guru_id == Auth::user()->guru()->first()->id)
-                                            <p class="text-secondary">Wali kelas</p>
-                                        @endif
-                                    </a>
+                                    @if($user->guru()->first()->kelas()->first()) 
+                                        <a href="{{route('kelas.show', $user->guru()->first()->kelas()->first()->id)}}">
+                                            <h3>{{$user->guru()->first()->kelas()->first()->full_kelas}}</h3>
+                                            @if($user->guru()->first()->kelas()->first()->guru_id == Auth::user()->guru()->first()->id)
+                                                <p class="text-secondary">Wali kelas</p>
+                                            @endif
+                                        </a>
+                                    @endif
                                 @endif
                             </div>
                         </div>

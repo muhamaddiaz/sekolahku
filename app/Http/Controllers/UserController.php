@@ -10,6 +10,10 @@ use Validator;
 use App\Guru;
 use App\Kelas;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PasswordAccount;
+
 class UserController extends Controller
 {
     public function profile(Request $req) {
@@ -53,13 +57,14 @@ class UserController extends Controller
         // Untuk menyimpan pengguna
 
         if($request->query('role') == 'pelajar') {
+            $password = "secret";
             $user = new User;
             $user->school_info_id = Auth::user()->school_info_id;
             $user->name = $request->name;
             $user->username = $request->username;
             $user->role = 0;
             $user->email = $request->email;
-            $user->password = 'secret';
+            $user->password = Hash::make('secret');
 
             $user->save();
 
@@ -72,18 +77,21 @@ class UserController extends Controller
             $siswa->NISN = $request->nisn;
             $siswa->email = $request->email;
             $siswa->osis = 0;
-
+            
             $user->siswa()->save($siswa);
+
+            Mail::to($user)->send(new PasswordAccount($user, $password));
 
             return back()->with('success', 'Data pelajar berhasil direkam');
         } else if($request->query('role') == 'pengajar') {
+            $password = "secret";
             $user = new User;
             $user->school_info_id = Auth::user()->school_info_id;
             $user->name = $request->name;
             $user->username = $request->username;
             $user->role = 2;
             $user->email = strtolower($request->email);
-            $user->password = 'secret';
+            $user->password = Hash::make('secret');
 
             $user->save();
 
@@ -95,6 +103,8 @@ class UserController extends Controller
             $guru->mata_pelajaran = 'Ekonomi';
 
             $user->guru()->save($guru);
+
+            Mail::to($user)->send(new PasswordAccount($user, $password));
 
             return back()->with('success', 'Data pengajar berhasil direkam');
         }
