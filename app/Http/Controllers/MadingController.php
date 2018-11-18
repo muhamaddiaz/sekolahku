@@ -21,6 +21,16 @@ class MadingController extends Controller
         return response()->json(Mading::all());
     }
 
+    public function create()
+    {
+        $school = Auth::user()->schoolInfo()->first();
+        $siswa = Auth::user()->siswa()->first();
+        return view('mading.create',[
+            'siswa' => $siswa,
+            'school' => $school
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -50,6 +60,11 @@ class MadingController extends Controller
      */
     public function show($id)
     {
+        
+    }
+
+    public function edit($id)
+    {
         $school= Auth::user()->schoolInfo()->first();
         $mading = Mading::find($id);
         $siswa = Auth::user()->siswa()->first();
@@ -71,11 +86,14 @@ class MadingController extends Controller
     {
         $mading = Mading::find($request['id']);
         $gambar = $request->file('gambar');
-        $namaFile = $gambar->getClientOriginalName();
-        $request->file('gambar')->move('mading_picture', $namaFile);
+        if($gambar) {
+            $namaFile = $gambar->getClientOriginalName();
+            $request->file('gambar')->move('mading_picture', $namaFile);
+            $mading->image_mading = $namaFile;
+        }
         $mading->siswa_id = $request['id_siswa'];
         $mading->judul_mading = $request['judul'];
-        $mading->image_mading = $namaFile;
+        
         $mading->deskripsi = $request['deskripsi'];
         $mading->kategori_mading = $request['kategori'];
         $mading->save();
@@ -93,14 +111,6 @@ class MadingController extends Controller
         DB::table('mading')->where('id',$id)->delete();
         return redirect()->route('main.emading');
     }
-    public function create()
-    {
-        $school = Auth::user()->schoolInfo()->first();
-        $siswa = Auth::user()->siswa()->first();
-        return view('mading.store',[
-            'siswa' => $siswa,
-            'school' => $school
-        ]);
-    }
+
 }
     

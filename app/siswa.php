@@ -4,6 +4,7 @@ namespace App;
 
 use \App\User;
 use \App\Kelas;
+use \App\Mading;
 use \App\siswa as Siswa;
 
 use Illuminate\Database\Eloquent\Model;
@@ -30,5 +31,8 @@ class siswa extends Model
     public function kelas()
     {
     	return $this->belongsTo(Kelas::class);
+    }
+    public function mading() {
+        return $this->hasMany(Mading::class);
     }
 }

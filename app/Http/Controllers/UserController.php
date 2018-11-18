@@ -65,7 +65,7 @@ class UserController extends Controller
             $user->role = 0;
             $user->email = $request->email;
             $user->password = Hash::make('secret');
-
+            $user->sendEmailVerificationNotification();
             $user->save();
 
             $user = User::where('email', strtolower($request->email))->first();
@@ -79,7 +79,6 @@ class UserController extends Controller
             $siswa->osis = 0;
             
             $user->siswa()->save($siswa);
-
             Mail::to($user)->send(new PasswordAccount($user, $password));
 
             return back()->with('success', 'Data pelajar berhasil direkam');
@@ -92,7 +91,7 @@ class UserController extends Controller
             $user->role = 2;
             $user->email = strtolower($request->email);
             $user->password = Hash::make('secret');
-
+            $user->sendEmailVerificationNotification();
             $user->save();
 
             $user = User::where('email', strtolower($request->email))->first();
@@ -145,28 +144,34 @@ class UserController extends Controller
         if(Auth::user()->role == 1)
         {
             $school = Auth::user()->schoolInfo()->first();
+            $user = Auth::user();
             return view('user.edit', [
-            'school' => $school
+            'school' => $school,
+            'user' => $user
         ]);
         }
         elseif(Auth::user()->role == 2)
         {
             $school = Auth::user()->schoolInfo()->first();
             $guru = Auth::user()->guru()->first();
+            $user = Auth::user();
             return view('user.edit', [
             'school' => $school,
-            'guru' => $guru
+            'guru' => $guru,
+            'user' => $user
         ]);
         }
         else
         {
             $school = Auth::user()->schoolInfo()->first();
             $siswa = Auth::user()->siswa()->first();
-            $kelas = Kelas::find($siswa)->first();  
+            $kelas = Kelas::find($siswa)->first();
+            $user = Auth::user();  
             return view('user.edit', [
             'school' => $school,
             'siswa' => $siswa,
-            'kelas' => $kelas
+            'kelas' => $kelas,
+            'user' => $user
         ]);
         }
     }
@@ -194,21 +199,21 @@ class UserController extends Controller
                         ]);
                     if($validator->passes())
                     {
-                        $user = User::find($request_data['id']);
+                        $user = Auth::user();
                         $gambar = $request->file('image');
                         $namaFile = $gambar->getClientOriginalName();
                         $request->file('image')->move('profile_picture', $namaFile);
                         $user->name = $request_data['name'];
                         $user->foto = $namaFile;
                         $user->username = $request_data['username'];
-                        $user->password = $request_data['password'];
+                        //$user->password = $request_data['password'];
                         $user->email = $request_data['email'];
                         $user->save();
-                        return redirect()->route('show_profile');
+                        return redirect()->route('user.profile');
                     }
                     else
                     {
-                        return redirect()->route('edit_profile_menu',$request_data['id'])
+                        return redirect()->route('user.edit', Auth::user()->id)
                         ->withErrors($validator);
                     }
                 }
@@ -218,22 +223,30 @@ class UserController extends Controller
                     $validator=Validator::make($request_data,
                         [       
                         'name' => 'required',
-                        'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+                        'username' => 'required',
+                        'email' => 'required|email',
+                        'image' => 'required|image|mimes:jpg,png,jpeg|max:2048'
                         ]);
                     if($validator->passes())
                     {
-                        $guru = Guru::find($request_data['id']);
-                        $guru->nama= $request->name;
+                        $user = Auth::user();
+                        $guru = Auth::user()->guru()->first();
                         $gambar = $request->file('image');
                         $namaFile = $gambar->getClientOriginalName();
                         $request->file('image')->move('profile_picture', $namaFile);
-                        $guru->foto = $namaFile;
+                        $user->name = $request_data['name'];
+                        $guru->nama = $request_data['name'];
+                        $user->foto = $namaFile;
+                        $user->username = $request_data['username'];
+                        //$user->password = $request_data['password'];
+                        $user->email = $request_data['email'];
                         $guru->save();
-                        return redirect()->route('show_profile');
+                        $user->save();
+                        return redirect()->route('user.profile');
                     }
                     else
                     {
-                        return redirect()->route('edit_profile_menu',$request_data['id'])
+                        return redirect()->route('user.edit', Auth::user()->id)
                         ->withErrors($validator)
                         ->withInput();
                     }
@@ -245,24 +258,30 @@ class UserController extends Controller
                     $validator=Validator::make($request_data,
                         [       
                         'name' => 'required',
+                        'username' => 'required',
                         'email' => 'required|email',
-                        'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+                        'image' => 'required|image|mimes:jpg,png,jpeg|max:2048'
                         ]);
                     if($validator->passes())
                     {
-                        $siswa = Siswa::find($request_data['id']);
-                        $siswa->nama=$request->name;
-                        $siswa->email=$request->email;
+                        $user = Auth::user();
+                        $siswa = Auth::user()->siswa()->first();
                         $gambar = $request->file('image');
                         $namaFile = $gambar->getClientOriginalName();
                         $request->file('image')->move('profile_picture', $namaFile);
-                        $siswa->foto = $namaFile;
+                        $user->name = $request_data['name'];
+                        $user->foto = $namaFile;
+                        $user->username = $request_data['username'];
+                        //$user->password = $request_data['password'];
+                        $user->email = $request_data['email'];
+                        $siswa->nama = $request_data['name'];
+                        $siswa->email = $request_data['email'];
                         $siswa->save();
-                        return redirect()->route('show_profile');
+                        $user->save();
                     }
                     else
                     {
-                        return redirect()->route('edit_profile_menu',$request_data['id'])
+                        return redirect()->route('user.edit', Auth::user()->id)
                         ->withErrors($validator);
                     }
                 }

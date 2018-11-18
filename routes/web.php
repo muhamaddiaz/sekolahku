@@ -39,20 +39,20 @@ Route::middleware('auth')->group(function() {
         Route::get('/emading', 'MainController@emading')->name('emading');
     });
 
+    Route::resource('mading', 'MadingController');
     Route::resource('/kelas', 'KelasController');
     Route::resource('/forum', 'ForumController');
     Route::get('/classmates', 'KelasController@classMates')->name('classmates');
-    Route::get('/profile', 'UserController@profile')->name('user.profile');
+    Route::middleware('verified')->group(function() {
+        Route::get('/profile', 'UserController@profile')->name('user.profile');
+    });
 
     Route::get('/download/siswa', 'ExcelController@downloadSiswa')->name('excel.download.siswa');
     Route::get('/download/guru', 'ExcelController@downloadGuru')->name('excel.download.guru');
 });
 
-Route::get('/create_mading','MadingController@create')->name('create_mading');
 Route::post('/store_mading','MadingController@store')->name('store_mading');
 Route::get('/edit_mading/{id}','MadingController@show')->name('edit_mading');
 Route::post('/update_mading/{id}','MadingController@update')->name('update_mading');
 Route::get('/destroy_mading/{id}','MadingController@destroy')->name('destroy_mading');
-Route::get('/edit_profile_menu/{id}','UserController@edit')->name('edit_profile_menu');
-Route::post('/edit_profile/{id}', 'UserController@update')->name('edit_profile');
 

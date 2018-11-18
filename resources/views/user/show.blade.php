@@ -6,7 +6,11 @@
     <div class="profile-container">
         <div class="profile__header">
             <div class="profile__header__info text-center text-white">
-                <img style="width: 100px; height: 100px" src={{asset('images/avatar/man-1.svg')}} alt="no image"/>
+                @if($user->foto)
+                    <img style="width: 150px; height: 150px; border-radius: 50%" src={{asset('profile_picture/'. $user->foto)}} alt="no image"/>
+                @else
+                    <img style="width: 150px; height: 150px" src={{asset('images/avatar/man-1.svg')}} alt="no image"/>
+                @endif
                 <br><br>
                 @if($path == 'profile')
                     <h2>{{$user->name}}</h2>
