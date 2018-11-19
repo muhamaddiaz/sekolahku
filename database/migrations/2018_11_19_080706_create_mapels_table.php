@@ -16,6 +16,11 @@ class CreateMapelsTable extends Migration
         Schema::create('mapels', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('school_info_id')->unsigned();
+            $table->string('nama_mapel');
+            $table->foreign('school_info_id')
+                    ->references('id')
+                    ->on('school_infos')
+                    ->onDelete('cascade');
             $table->timestamps();
         });
     }

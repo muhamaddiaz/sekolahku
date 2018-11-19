@@ -16,11 +16,16 @@ class Nilai extends Migration
          Schema::create('nilai', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('siswa_id')->unsigned();
-            $table->string('mata_pelajaran');
-            $table->integer('nilai_pelajaran');
+            $table->integer('mapel_id')->unsigned();
+            $table->integer('nilai');
             $table->foreign('siswa_id')
                     ->references('id')
                     ->on('siswa')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+            $table->foreign('mapel_id')
+                    ->references('id')
+                    ->on('mapels')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->timestamps();
