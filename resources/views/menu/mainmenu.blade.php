@@ -3,7 +3,11 @@
 @section('title', 'Main Menu')
 
 @section('content-2')
-<div class="main-class text-white ml-5 pb-3" style="background-color: grey; background-size: 100% 100%; background-attachment: fixed">
+@if(Auth::user()->config()->first()->background_image)
+    <div class="main-class text-white ml-5 pb-3" style="background-image: url({{asset('background/'. Auth::user()->config()->first()->background_image)}}); background-size: 100% 100%; background-attachment: fixed">
+@else
+    <div class="main-class text-white ml-5 pb-3" style="background-color: grey; background-size: 100% 100%; background-attachment: fixed">
+@endif
     <div class="container pt-5">
         @if(session('success'))
         @component('components.alert', ['title' => 'success'])

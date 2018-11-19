@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Config;
 use App\User;
 use App\siswa as Siswa;
 use Illuminate\Http\Request;
@@ -77,7 +78,11 @@ class UserController extends Controller
             $siswa->NISN = $request->nisn;
             $siswa->email = $request->email;
             $siswa->osis = 0;
+
+            $config = new Config;
             
+            $user->config()->save($config);
+
             $user->siswa()->save($siswa);
             Mail::to($user)->send(new PasswordAccount($user, $password));
 
@@ -100,6 +105,10 @@ class UserController extends Controller
             $guru->school_info_id = Auth::user()->school_info_id;
             $guru->nama = $request->name;
             $guru->mata_pelajaran = 'Ekonomi';
+
+            $config = new Config;
+            
+            $user->config()->save($config);
 
             $user->guru()->save($guru);
 
@@ -195,19 +204,28 @@ class UserController extends Controller
                         'name' => 'required',
                         'username' => 'required',
                         'email' => 'required|email',
-                        'image' => 'required',
+                        'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+                        'background' => 'required|image|mimes:jpg,png,jpeg|max:2048'
                         ]);
                     if($validator->passes())
                     {
                         $user = Auth::user();
                         $gambar = $request->file('image');
+                        $bg = $request->file('background');
                         $namaFile = $gambar->getClientOriginalName();
                         $request->file('image')->move('profile_picture', $namaFile);
+                        $namaBg = $bg->getClientOriginalName();
+                        $request->file('background')->move('background', $namaBg);
                         $user->name = $request_data['name'];
                         $user->foto = $namaFile;
                         $user->username = $request_data['username'];
                         //$user->password = $request_data['password'];
                         $user->email = $request_data['email'];
+
+                        $user->config()->first()->update([
+                            'background_image' => $namaBg
+                        ]);
+                        
                         $user->save();
                         return redirect()->route('user.profile');
                     }
@@ -225,7 +243,8 @@ class UserController extends Controller
                         'name' => 'required',
                         'username' => 'required',
                         'email' => 'required|email',
-                        'image' => 'required|image|mimes:jpg,png,jpeg|max:2048'
+                        'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+                        'background' => 'required|image|mimes:jpg,png,jpeg|max:2048'
                         ]);
                     if($validator->passes())
                     {
@@ -260,7 +279,8 @@ class UserController extends Controller
                         'name' => 'required',
                         'username' => 'required',
                         'email' => 'required|email',
-                        'image' => 'required|image|mimes:jpg,png,jpeg|max:2048'
+                        'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+                        'background' => 'required|image|mimes:jpg,png,jpeg|max:2048'
                         ]);
                     if($validator->passes())
                     {

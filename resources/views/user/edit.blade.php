@@ -14,19 +14,23 @@
             @method("PATCH")
             <div class="form-group">
                 <label for="name">Nama Lengkap: </label>
-                <input type="text" name="name" value="{{$user->name}}" class="form-control" placeholder="Nama Lengkap">
+                <input type="text" name="name" value="{{$user->name}}" class="form-control" placeholder="Nama Lengkap" required>
             </div>
             <div class="form-group">
                 <label for="username">Nama pengguna: </label>
-                <input type="text" name="username" value="{{$user->username}}" class="form-control" placeholder="Nama Pengguna">
+                <input type="text" name="username" value="{{$user->username}}" class="form-control" placeholder="Nama Pengguna" required>
             </div>
             <div class="form-group">
                 <label for="email">Email </label>
-                <input type="text" name="email" value="{{$user->email}}" class="form-control" placeholder="Alamat Email">
+                <input type="text" name="email" value="{{$user->email}}" class="form-control" placeholder="Alamat Email" required>
             </div>
             <div class="form-group">
                 <label for="photo">Upload foto profil</label>
                 <input type="file" name="image" id="photo">
+            </div>
+            <div class="form-group">
+                <label for="background">Upload foto latar</label>
+                <input type="file" name="background" id="background">
             </div>
             <button type="submit" class="btn btn-success">Perbarui data</button>
         </form>
