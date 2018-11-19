@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 <li title="Nilai">
-                    <a href="/">
+                    <a href="{{route('analytic.index')}}">
                         <img style="width: 30px; height: 30px" src={{asset('images/pie-chart.svg')}} alt="no image"/>
                     </a>
                 </li>

@@ -78,4 +78,9 @@ class ExcelController extends Controller
                 );
         return Response::download($file, 'siswa_sekolahku.xlsx', $headers);
     }
+
+    public function exportGuru() {
+        return Excel::download(new \App\Exports\GuruExport, 'guru.xlsx');
+    }
+
 }

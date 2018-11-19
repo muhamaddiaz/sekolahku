@@ -49,6 +49,10 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/download/siswa', 'ExcelController@downloadSiswa')->name('excel.download.siswa');
     Route::get('/download/guru', 'ExcelController@downloadGuru')->name('excel.download.guru');
+
+    Route::get('/export/guru', 'ExcelController@exportGuru')->name('excel.export.guru');
+
+    Route::resource('/analytic', 'AnalyticController');
 });
 
 Route::post('/store_mading','MadingController@store')->name('store_mading');

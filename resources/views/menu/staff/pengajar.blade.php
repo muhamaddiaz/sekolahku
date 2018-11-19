@@ -23,6 +23,7 @@
                     </tr>
                 </thead>
             </table>
+            <a href="{{route('excel.export.guru')}}" class="btn btn-success">Export data</a>
             {{-- @if($pengajar)
                 <div class="row">
                     @foreach($pengajar as $p)
