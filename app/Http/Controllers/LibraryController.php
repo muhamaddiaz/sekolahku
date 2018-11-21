@@ -8,6 +8,7 @@ use App\Library;
 use App\Report;
 use DB;
 use App\Notification;
+use Validator;
 use Illuminate\Support\Facades\Auth;
 
 class LibraryController extends Controller
@@ -43,22 +44,36 @@ class LibraryController extends Controller
      */
     public function store(Request $request)
     {
-        ini_set('upload_max_filesize limit', '100M');
-        $library = new Library;
-        $library->judul = $request->title;
-        $library->deskripsi = $request->summernote;
-        $library->kategori = $request->kategori;
-        $library->user_id = $request->id;
-        $file = $request->file('file');
-        $namaFile = $file->getClientOriginalName();
-        $request->file('file')->move('library/file',$namaFile);
-        $library->file_buku = $namaFile;
-        $image =$request->file('image');
-        $namaImage = $image->getClientOriginalName();
-        $request->file('image')->move('library/image',$namaImage);
-        $library->image = $namaImage;
-        $save = Auth::user()->first()->schoolInfo()->first()->library()->save($library);
-        return redirect()->route('main.elibrary');
+        $validator = Validator::make($request->all(),[
+            'title' => 'required',
+            'kategori' => 'required',
+            'summernote' => 'required',
+            'file' => 'required|mime: pptx,ppt,docx,pdf|size: 100M',
+            'image' => 'required|mime: png,jpg,jpeg|size: 100M',
+        ]);
+        if($validator->passes())
+        {
+            $library = new Library;
+            $library->judul = $request->title;
+            $library->deskripsi = $request->summernote;
+            $library->kategori = $request->kategori;
+            $library->user_id = $request->id;
+            $file = $request->file('file');
+            $namaFile = $file->getClientOriginalName();
+            $request->file('file')->move('library/file',$namaFile);
+            $library->file_buku = $namaFile;
+            $image =$request->file('image');
+            $namaImage = $image->getClientOriginalName();
+            $request->file('image')->move('library/image',$namaImage);
+            $library->image = $namaImage;
+            $save = Auth::user()->first()->schoolInfo()->first()->library()->save($library);
+            return redirect()->route('main.elibrary');
+        }
+        else
+        {
+            $messages = $validator->errors();
+            return back()->withErrors($messages)->withInput();
+        }
     }
 
     /**
@@ -100,20 +115,36 @@ class LibraryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $library = Library::find($id);
-        $library->judul = $request->title;
-        $library->kategori = $request->kategori;
-        $library->deskripsi = $request->summernote;
-        $file = $request->file('file');
-        $namaFile = $file->getClientOriginalName();
-        $request->file('file')->move('library/file',$namaFile);
-        $library->file_buku = $namaFile;
-        $image =$request->file('image');
-        $namaImage = $image->getClientOriginalName();
-        $request->file('image')->move('library/image',$namaImage);
-        $library->image = $namaImage;
-        $library->save();
-        return redirect()->route('main.elibrary');
+        $validator = Validator::make($request->all(),[
+            'title' => 'required',
+            'kategori' => 'required',
+            'summernote' => 'required',
+            'file' => 'required|mime: pptx,ppt,docx,pdf|size: 100M',
+            'image' => 'required|mime: png,jpg,jpeg|size: 100M',
+        ]);
+        if($validator->passes())
+        {
+            $library = Library::find($id);
+            $library->judul = $request->title;
+            $library->kategori = $request->kategori;
+            $library->deskripsi = $request->summernote;
+            $file = $request->file('file');
+            $namaFile = $file->getClientOriginalName();
+            $request->file('file')->move('library/file',$namaFile);
+            $library->file_buku = $namaFile;
+            $image =$request->file('image');
+            $namaImage = $image->getClientOriginalName();
+            $request->file('image')->move('library/image',$namaImage);
+            $library->image = $namaImage;
+            $library->save();
+            return redirect()->route('main.elibrary');
+        }
+        else
+        {
+            $messages = $validator->errors();
+            return back()->withErrors($messages)->withInput();
+        }
+        
     }
 
     /**
