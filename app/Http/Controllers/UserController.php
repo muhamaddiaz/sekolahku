@@ -56,9 +56,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // Untuk menyimpan pengguna
-
+        $faker = Faker\Factory::create();
         if($request->query('role') == 'pelajar') {
-            $password = "secret";
+            $password = $faker->randomNumber(6);
             $user = new User;
             $user->school_info_id = Auth::user()->school_info_id;
             $user->name = $request->name;
@@ -88,7 +88,7 @@ class UserController extends Controller
 
             return back()->with('success', 'Data pelajar berhasil direkam');
         } else if($request->query('role') == 'pengajar') {
-            $password = "secret";
+            $password = $faker->randomNumber(6);
             $user = new User;
             $user->school_info_id = Auth::user()->school_info_id;
             $user->name = $request->name;
