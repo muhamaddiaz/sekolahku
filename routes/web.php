@@ -59,4 +59,10 @@ Route::post('/store_mading','MadingController@store')->name('store_mading');
 Route::get('/edit_mading/{id}','MadingController@show')->name('edit_mading');
 Route::post('/update_mading/{id}','MadingController@update')->name('update_mading');
 Route::get('/destroy_mading/{id}','MadingController@destroy')->name('destroy_mading');
-
+Route::get('/create_library','LibraryController@create')->name('create_library');
+Route::post('/store_library','LibraryController@store')->name('store_library');
+Route::get('/download_library/{id}','LibraryController@download')->name('download_libary');
+Route::get('/delete_library/{id}','LibraryController@destroy')->name('delete_libary');
+Route::get('/edit_library/{id}','LibraryController@edit')->name('edit_libary');
+Route::post('/update_library/{id}','LibraryController@update')->name('update_library');
+Route::post('/report/{id}','ReportController@report')->name('report');

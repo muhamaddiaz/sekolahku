@@ -131,6 +131,11 @@
                                                     <a class="card-text" href="{{route('mading.create')}}">Store Your Information</a>
                                                 </div>
                                             </div>
+                                            <div class="card primary-color">
+                                                <div class="card-body">
+                                                    <a class="card-text" href="/create_library">Store Your Book</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

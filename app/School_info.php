@@ -7,6 +7,7 @@ use App\Kelas;
 use App\Guru;
 use App\siswa;
 use App\Forum;
+use App\Library;
 use Illuminate\Database\Eloquent\Model;
 
 class School_info extends Model
@@ -31,5 +32,9 @@ class School_info extends Model
 
     public function forums() {
         return $this->hasMany(Forum::class);
+    }
+    public function library()
+    {
+        return $this->hasMany(Library::class);
     }
 }

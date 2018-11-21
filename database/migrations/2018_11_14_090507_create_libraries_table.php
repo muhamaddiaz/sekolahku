@@ -15,15 +15,17 @@ class CreateLibrariesTable extends Migration
     {
         Schema::create('libraries', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('siswa_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->integer('school_info_id')->unsigned();
             $table->string('judul');
+            $table->string('file_buku')->nullable();
+            $table->string('image');
             $table->string('deskripsi');
             $table->string('kategori');
             $table->string('video')->nullable();
-            $table->foreign('siswa_id')
+            $table->foreign('user_id')
                     ->references('id')
-                    ->on('siswa');
+                    ->on('users');
             $table->foreign('school_info_id')
                     ->references('id')
                     ->on('school_infos')
