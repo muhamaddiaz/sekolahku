@@ -19,11 +19,11 @@
                     <table class="table table-striped-black">
                         <thead>
                             <tr>
-                                <th>Judul</th>
-                                <th>Uploaded By</th>
-                                <th>Sekolah</th>
-                                <th>Cover</th>
-                                <th>Action</th>
+                                <th class="primary-color">Judul</th>
+                                <th class="primary-color">Uploaded By</th>
+                                <th class="primary-color">Sekolah</th>
+                                <th class="primary-color">Cover</th>
+                                <th class="primary-color">Action</th>
                             </tr>    
                         </thead>
                         <tbody>

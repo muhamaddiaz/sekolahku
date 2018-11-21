@@ -93,15 +93,6 @@ var myChart2 = new Chart(ctx2, {
             borderWidth: 1
         }]
     },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
 });
 </script>
 
