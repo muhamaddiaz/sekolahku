@@ -28,7 +28,11 @@
                 <div class="main-class__greet-text mb-4 mt-4 p-5 animated bounceInDown primary-color" style="background-color: white; border-radius: 10px">
                     <div class="row">
                         <div class="col-md-3 text-center">
-                            <img style="width: 100px; height: 100px" src={{asset('images/avatar/man-1.svg')}} alt="no image" />
+                            @if(Auth::user()->foto)
+                                <img style="width: 100px; height: 100px; border-radius: 50%" src={{asset('profile_picture/'. Auth::user()->foto)}} alt="no image"/>
+                            @else
+                                <img style="width: 100px; height: 100px" src={{asset('images/avatar/man-1.svg')}} alt="no image"/>
+                            @endif
                         </div>
                         <div class="col-md-9 pt-3">
                             <h1 style="font-size: 2rem; font-weight: 600">{{Auth::user()->name}}</h1>
@@ -177,7 +181,7 @@
                             </a>
                         </div>
                         <div class="col-md-3 mt-3">
-                            <a href="">
+                            <a href="{{route('mapel.index')}}">
                                 <div class="card primary-color-background text-white">
                                     <div class="card-body">
                                         <h3 class="card-title">Mata Pelajaran</h3>

@@ -28,6 +28,7 @@ class HomeController extends Controller
         $school = Auth::user()->schoolInfo()->first();
         $kelasCount = $school->kelas()->count();
         $kelas = $school->kelas()->get();
+        $mapelCount = $school->mapel()->count();
         if(Auth::user()->role == 0) {
             $classMates = Auth::user()->siswa()->first()
                     ->kelas()->first()
@@ -45,7 +46,8 @@ class HomeController extends Controller
             'school' => $school, 
             'notifCount' => $notifCount, 
             'kelasCount' => $kelasCount,
-            'kelas' => $kelas
+            'kelas' => $kelas,
+            'mapelCount' => $mapelCount
         ]);
     }
 }

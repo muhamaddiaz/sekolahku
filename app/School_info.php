@@ -37,4 +37,8 @@ class School_info extends Model
     {
         return $this->hasMany(Library::class);
     }
+    public function mapel() 
+    {
+        return $this->hasMany(Mapel::class);
+    }
 }

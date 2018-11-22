@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Faker\Generator as Faker;
 use App\Config;
 use App\User;
 use App\siswa as Siswa;
@@ -53,10 +54,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Faker $faker)
     {
         // Untuk menyimpan pengguna
-        $faker = Faker\Factory::create();
         if($request->query('role') == 'pelajar') {
             $password = $faker->randomNumber(6);
             $user = new User;

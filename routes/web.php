@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/export/guru', 'ExcelController@exportGuru')->name('excel.export.guru');
 
     Route::resource('/analytic', 'AnalyticController');
+    Route::resource('/mapel', 'MapelController');
 });
 
 Route::post('/store_mading','MadingController@store')->name('store_mading');

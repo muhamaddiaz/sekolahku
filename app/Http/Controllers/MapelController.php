@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mapel;
+use Validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class MapelController extends Controller
@@ -14,6 +17,8 @@ class MapelController extends Controller
     public function index()
     {
         //
+        
+        return view("mapel.index");
     }
 
     /**
@@ -34,7 +39,17 @@ class MapelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // menyimpan data mata pelajaran ke database
+
+        $mapel = new Mapel;
+        $mapel->nama_mapel = $request->mapel;
+
+        $auth = Auth::user()->schoolInfo()->first();
+        if($auth->mapel()->save($mapel)) {
+            return back()->with('success', 'Mata pelajaran berhasil dibuat');
+        } else {
+            return back()->with('danger', 'Mata pelajaran gagal dibuat');
+        }
     }
 
     /**

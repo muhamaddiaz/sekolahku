@@ -48,8 +48,8 @@ class LibraryController extends Controller
             'title' => 'required',
             'kategori' => 'required',
             'summernote' => 'required',
-            'file' => 'required|mime: pptx,ppt,docx,pdf|size: 100M',
-            'image' => 'required|mime: png,jpg,jpeg|size: 100M',
+            'file' => 'required|mimes: pptx,ppt,docx,pdf|size: 100M',
+            'image' => 'required|mimes: png,jpg,jpeg|size: 100M',
         ]);
         if($validator->passes())
         {
@@ -83,12 +83,9 @@ class LibraryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    /**
-    public function show($id)
-    {
-
-    }
-    */
+     public function show($id) {
+         
+     }
 
     /**
      * Show the form for editing the specified resource.
