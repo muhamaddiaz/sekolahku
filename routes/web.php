@@ -3,7 +3,7 @@
 use App\Province;
 
 Route::get('/', function () {
-    return view('staticpages.index');
+    return view('staticpages.index2');
 })->middleware('guest');
 
 Auth::routes(['verify' => true]);

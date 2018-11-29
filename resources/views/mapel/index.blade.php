@@ -1,4 +1,4 @@
-@extends('home')
+{{-- @extends('home') --}}
 
 @section('title', 'Mata Pelajaran')
 
