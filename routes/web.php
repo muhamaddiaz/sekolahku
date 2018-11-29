@@ -43,9 +43,9 @@ Route::middleware('auth')->group(function() {
     Route::resource('/kelas', 'KelasController');
     Route::resource('/forum', 'ForumController');
     Route::get('/classmates', 'KelasController@classMates')->name('classmates');
-    Route::middleware('verified')->group(function() {
+    //Route::middleware('verified')->group(function() {
         Route::get('/profile', 'UserController@profile')->name('user.profile');
-    });
+    // });
 
     Route::get('/download/siswa', 'ExcelController@downloadSiswa')->name('excel.download.siswa');
     Route::get('/download/guru', 'ExcelController@downloadGuru')->name('excel.download.guru');
