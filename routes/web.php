@@ -66,4 +66,4 @@ Route::get('/download_library/{id}','LibraryController@download')->name('downloa
 Route::get('/delete_library/{id}','LibraryController@destroy')->name('delete_libary');
 Route::get('/edit_library/{id}','LibraryController@edit')->name('edit_libary');
 Route::post('/update_library/{id}','LibraryController@update')->name('update_library');
-Route::post('/report/{id}','ReportController@report')->name('report');
+// Route::post('/report/{id}','ReportController@report')->name('report');
