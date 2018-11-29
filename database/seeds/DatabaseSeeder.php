@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SiswaSeeder::class);
         $this->call(MadingSeeder::class);
         $this->call(ForumSeeder::class);
+        $this->call(ConfigSeeder::class);
     }
 }
