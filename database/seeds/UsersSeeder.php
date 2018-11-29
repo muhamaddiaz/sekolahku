@@ -50,5 +50,12 @@ class UsersSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ]);
         }
+        for($i = 1; $i < 11; $i++) {
+            DB::table('configs')->insert([
+                'user_id' => $i,
+                'background_image' => null,
+                'public' => true
+            ]);
+        }
     }
 }
